@@ -19,6 +19,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+        buildConfigField "String", "MOVIE_API_KEY", "\"93aea0c77bc168d8bbce3918cefefa45\""
+        buildConfigField "String", "MOVIE_IMAGE_PATH", "\"https://image.tmdb.org/t/p/original\""
     }
 
     buildFeatures {
@@ -60,16 +63,25 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // Android Compose
     implementation "androidx.compose.ui:ui:$composeVersion"
     implementation "androidx.compose.material:material:$composeVersion"
     implementation "androidx.compose.ui:ui-tooling:$composeVersion"
     implementation "androidx.compose.runtime:runtime-livedata:$composeVersion"
+
+    // Network Request
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
 
     // Dependency injection
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$vmDaggerVersion"
     kapt "androidx.hilt:hilt-compiler:$vmDaggerVersion"
     implementation "com.google.dagger:hilt-android:$daggerVersion"
     kapt "com.google.dagger:hilt-android-compiler:$daggerVersion"
+
+    // Debugging
+    debugImplementation "com.itkacher.okhttpprofiler:okhttpprofiler:$okHttpProfilerVersion"
 
     implementation "com.github.skydoves:landscapist-coil:$glideVersion"
 }

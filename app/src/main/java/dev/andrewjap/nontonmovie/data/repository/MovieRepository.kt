@@ -1,8 +1,13 @@
 package dev.andrewjap.nontonmovie.data.repository
 
-import dev.andrewjap.nontonmovie.domain.entity.Movie
-import kotlinx.coroutines.flow.Flow
+import dev.andrewjap.nontonmovie.data.api.MovieService
+
+/**
+ * Designed and developed by Andrew Japar (@andrewjapar)
+ *
+ */
 
 interface MovieRepository {
-    suspend fun getPopular(): Flow<List<Movie>>
 }
+
+class MovieRepositoryImpl(private val movieService: MovieService) : MovieRepository
