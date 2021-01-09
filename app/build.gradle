@@ -83,5 +83,5 @@ dependencies {
     // Debugging
     debugImplementation "com.itkacher.okhttpprofiler:okhttpprofiler:$okHttpProfilerVersion"
 
-    implementation "com.github.skydoves:landscapist-coil:$glideVersion"
+    implementation "com.github.skydoves:landscapist-glide:$glideVersion"
 }
