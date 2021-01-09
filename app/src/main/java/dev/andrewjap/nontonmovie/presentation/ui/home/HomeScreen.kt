@@ -1,11 +1,9 @@
 package dev.andrewjap.nontonmovie.presentation.ui.home
 
-import android.util.Log
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -15,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.domain.entity.Movie
 import dev.andrewjap.nontonmovie.presentation.ui.home.component.HeadlineMovieSlider
-import dev.andrewjap.nontonmovie.presentation.ui.home.component.PortraitMovieItem
+import dev.andrewjap.nontonmovie.presentation.ui.home.component.HorizontalMovieList
 
 @Composable
 fun HomeScreen(
@@ -36,11 +34,18 @@ fun HomeScreen(
                     .preferredHeight(boxWidth.div(1.77f))
             )
 
-            LazyRow {
-                items(movies) { movie ->
-                    PortraitMovieItem(movie = movie, onItemClicked = { Log.d("testo", "asdsd") })
-                }
-            }
+            HorizontalMovieList(
+                items = movies + movies + movies + movies,
+                title = "Hello World",
+                paddingContent = 8.dp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .preferredHeight(
+                        boxWidth
+                            .div(3)
+                            .div(0.75f)
+                    )
+            )
         }
     }
 }
