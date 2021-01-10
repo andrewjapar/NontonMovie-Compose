@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,11 +25,15 @@ fun HorizontalMovieList(
     title: String? = null,
     paddingContent: Dp = 0.dp
 ) {
-    Column(modifier = modifier) {
+    Column(
+        modifier = modifier.padding(bottom = 16.dp)
+    ) {
 
         if (!title.isNullOrBlank()) Text(
             text = title,
-            modifier = Modifier.padding(start = 8.dp.plus(paddingContent))
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier
+                .padding(start = 8.dp.plus(paddingContent), bottom = 8.dp)
         )
 
         LazyRow(

@@ -1,6 +1,5 @@
 package dev.andrewjap.nontonmovie.presentation.ui.home
 
-import android.util.Log
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,7 +17,9 @@ import androidx.compose.ui.viewinterop.viewModel
 import dev.andrewjap.nontonmovie.domain.entity.Movie
 import dev.andrewjap.nontonmovie.presentation.ui.home.component.HeadlineMovieSlider
 import dev.andrewjap.nontonmovie.presentation.ui.home.component.HorizontalMovieList
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 @Composable
 fun HomeScreen(
     movies: List<Movie>
@@ -27,17 +28,15 @@ fun HomeScreen(
     val viewModel: HomeViewModel = viewModel()
     val viewState by viewModel.showMovies.collectAsState()
 
-    Log.d("testo", "${viewState.popularMovies}")
-
     WithConstraints {
         val boxWidth = with(AmbientDensity.current) { constraints.maxWidth.toDp() }
 
         ScrollableColumn(
-            Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
 
             HeadlineMovieSlider(
-                items = movies,
+                items = viewState.popularMovies,
                 modifier = Modifier
                     .padding(start = 16.dp, top = 16.dp, end = 16.dp)
                     .fillMaxWidth()
@@ -46,14 +45,14 @@ fun HomeScreen(
 
             HorizontalMovieList(
                 items = viewState.popularMovies,
-                title = "Hello World",
+                title = "Popular Shows",
                 paddingContent = 8.dp,
                 modifier = Modifier
                     .fillMaxWidth()
                     .preferredHeight(
                         boxWidth
                             .div(3)
-                            .div(0.75f)
+                            .div(0.72f)
                     )
             )
 
@@ -76,6 +75,6 @@ fun HomeScreen(
 @Preview
 @Composable
 fun PreviewHomeScreen() {
-    val movies = remember { listOf(Movie(1, "Heroo", "image"), Movie(2, "Heroik", "image")) }
+    val movies = remember { listOf(Movie(1, "Heroo", "image", "asd"), Movie(2, "Heroik", "image", "asd")) }
     HomeScreen(movies = movies)
 }

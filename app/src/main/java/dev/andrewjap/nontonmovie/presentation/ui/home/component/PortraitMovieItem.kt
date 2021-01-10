@@ -36,7 +36,7 @@ fun PortraitMovieItem(
                 .align(Alignment.CenterHorizontally)
         ) {
             GlideImage(
-                data = movie.image,
+                data = movie.portraitImage,
                 contentScale = ContentScale.Crop,
                 modifier = modifier
                     .fillMaxSize()

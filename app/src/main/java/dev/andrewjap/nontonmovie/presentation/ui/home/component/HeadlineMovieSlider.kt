@@ -23,8 +23,10 @@ fun HeadlineMovieSlider(
         remember(clock) { PagerState(clock) }
     }
 ) {
-    pagerState.maxPage = (items.size - 1).coerceAtLeast(0)
-    Pager(state = pagerState, modifier = modifier) {
-        LandscapeMovieItem(movie = items[page], onItemClicked = { Log.d("testo", "clicked") })
+    if (items.isNotEmpty()) {
+        pagerState.maxPage = (items.size - 1).coerceAtLeast(0)
+        Pager(state = pagerState, modifier = modifier) {
+            LandscapeMovieItem(movie = items[page], onItemClicked = { Log.d("testo", "clicked") })
+        }
     }
 }

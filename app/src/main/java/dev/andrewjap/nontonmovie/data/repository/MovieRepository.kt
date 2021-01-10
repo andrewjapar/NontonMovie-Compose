@@ -26,7 +26,9 @@ class MovieRepositoryImpl(
                 Movie(
                     id = it.id,
                     name = it.title ?: "",
-                    image = BuildConfig.MOVIE_IMAGE_PATH + it.posterPath
+                    description = it.overview ?: "",
+                    portraitImage = BuildConfig.MOVIE_IMAGE_PATH + it.posterPath,
+                    landscapeImage = BuildConfig.MOVIE_IMAGE_PATH + it.backdropPath
                 )
             } ?: emptyList()
         }
