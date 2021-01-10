@@ -80,8 +80,18 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$daggerVersion"
     kapt "com.google.dagger:hilt-android-compiler:$daggerVersion"
 
+    // Fragment & Activity KTX
+    implementation "androidx.activity:activity-ktx:$activityKTX"
+
+    // Navigation Library
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
     // Debugging
     debugImplementation "com.itkacher.okhttpprofiler:okhttpprofiler:$okHttpProfilerVersion"
 
-    implementation "com.github.skydoves:landscapist-glide:$glideVersion"
+    // Live data
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+
+    implementation "dev.chrisbanes.accompanist:accompanist-glide:$glideVersion"
 }

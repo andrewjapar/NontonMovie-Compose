@@ -9,12 +9,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.skydoves.landscapist.glide.GlideImage
-import dev.andrewjap.nontonmovie.R
 import dev.andrewjap.nontonmovie.domain.entity.Movie
+import dev.chrisbanes.accompanist.glide.GlideImage
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -39,13 +37,11 @@ fun LandscapeMovieItem(
                 .align(Alignment.CenterHorizontally)
         ) {
             GlideImage(
-                imageModel = movie.image,
+                data = movie.image,
                 contentScale = ContentScale.Crop,
                 modifier = modifier
                     .fillMaxSize()
-                    .clip(MaterialTheme.shapes.small),
-                placeHolder = imageResource(R.drawable.website),
-                error = imageResource(R.drawable.website)
+                    .clip(MaterialTheme.shapes.small)
             )
         }
     }

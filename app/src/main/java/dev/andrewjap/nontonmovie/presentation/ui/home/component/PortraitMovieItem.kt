@@ -11,8 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import com.skydoves.landscapist.glide.GlideImage
 import dev.andrewjap.nontonmovie.domain.entity.Movie
+import dev.chrisbanes.accompanist.glide.GlideImage
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -36,7 +36,7 @@ fun PortraitMovieItem(
                 .align(Alignment.CenterHorizontally)
         ) {
             GlideImage(
-                imageModel = movie.image,
+                data = movie.image,
                 contentScale = ContentScale.Crop,
                 modifier = modifier
                     .fillMaxSize()
