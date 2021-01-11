@@ -1,5 +1,6 @@
 package dev.andrewjap.nontonmovie.presentation.ui.home.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -9,6 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -43,10 +45,25 @@ fun LandscapeMovieItem(
             GlideImage(
                 data = movie.landscapeImage,
                 contentScale = ContentScale.Crop,
-                modifier = modifier
+                modifier = Modifier
                     .fillMaxSize()
                     .clip(MaterialTheme.shapes.small)
+
             )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(Color.Transparent, Color.Black.copy(alpha = 0.5f)),
+                            0f,
+                            500f
+                        )
+                    )
+            )
+
             Text(
                 text = "${movie.name}: ${movie.description}",
                 color = Color.White,
