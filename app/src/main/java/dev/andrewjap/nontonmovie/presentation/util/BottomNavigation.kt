@@ -46,7 +46,9 @@ fun HomeBottomNavigation(
                 },
                 selected = currentRoute == it.route,
                 onClick = {
-                    if (currentRoute != it.route) navController.navigate(it.route)
+                    if (currentRoute != it.route) navController.navigate(it.route) {
+                        launchSingleTop = true
+                    }
                 }
             )
         }
