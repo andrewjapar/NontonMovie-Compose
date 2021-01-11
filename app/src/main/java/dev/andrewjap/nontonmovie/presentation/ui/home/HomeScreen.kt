@@ -22,10 +22,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Composable
 fun HomeScreen(
-    movies: List<Movie>
+    viewModel: HomeViewModel = viewModel()
 ) {
 
-    val viewModel: HomeViewModel = viewModel()
     val viewState by viewModel.showMovies.collectAsState()
 
     WithConstraints {
@@ -57,7 +56,7 @@ fun HomeScreen(
             )
 
             HorizontalMovieList(
-                items = movies,
+                items = viewState.popularMovies,
                 title = "Hello World",
                 paddingContent = 8.dp,
                 modifier = Modifier
@@ -70,11 +69,4 @@ fun HomeScreen(
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun PreviewHomeScreen() {
-    val movies = remember { listOf(Movie(1, "Heroo", "image", "asd"), Movie(2, "Heroik", "image", "asd")) }
-    HomeScreen(movies = movies)
 }

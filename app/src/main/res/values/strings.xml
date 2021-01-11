@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NontonMovie</string>
+    <string name="lbl_home">Home</string>
+    <string name="lbl_tv">TV</string>
+    <string name="lbl_movies">Movies</string>
+    <string name="lbl_sports">Sports</string>
 </resources>

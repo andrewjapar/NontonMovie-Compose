@@ -68,6 +68,7 @@ dependencies {
     implementation "androidx.compose.material:material:$composeVersion"
     implementation "androidx.compose.ui:ui-tooling:$composeVersion"
     implementation "androidx.compose.runtime:runtime-livedata:$composeVersion"
+    implementation "androidx.navigation:navigation-compose:1.0.0-alpha04"
 
     // Network Request
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -82,10 +83,6 @@ dependencies {
 
     // Fragment & Activity KTX
     implementation "androidx.activity:activity-ktx:$activityKTX"
-
-    // Navigation Library
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
     // Debugging
     debugImplementation "com.itkacher.okhttpprofiler:okhttpprofiler:$okHttpProfilerVersion"
