@@ -1,16 +1,14 @@
 package dev.andrewjap.nontonmovie.presentation.ui.home.component
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.domain.entity.Movie
 import dev.chrisbanes.accompanist.glide.GlideImage
 
@@ -25,10 +23,7 @@ fun PortraitMovieItem(
     onItemClicked: (Movie) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier
-            .clickable { onItemClicked.invoke(movie) }
-    ) {
+    Column(modifier) {
         Box(
             modifier = Modifier
                 .weight(1f)
@@ -41,6 +36,7 @@ fun PortraitMovieItem(
                 modifier = modifier
                     .fillMaxSize()
                     .clip(MaterialTheme.shapes.small)
+                    .clickable { onItemClicked.invoke(movie) }
             )
         }
     }
