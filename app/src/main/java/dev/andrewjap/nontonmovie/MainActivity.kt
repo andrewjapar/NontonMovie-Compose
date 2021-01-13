@@ -11,6 +11,7 @@ import androidx.compose.ui.platform.setContent
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dev.andrewjap.nontonmovie.presentation.ui.home.HomeViewModel
+import dev.andrewjap.nontonmovie.presentation.ui.home.component.AppDrawer
 import dev.andrewjap.nontonmovie.presentation.ui.theme.NontonMovieTheme
 import dev.andrewjap.nontonmovie.presentation.util.BottomNavigationScreens
 import dev.andrewjap.nontonmovie.presentation.util.HomeBottomNavigation
@@ -28,7 +29,12 @@ class MainActivity : AppCompatActivity() {
         setContent {
             NontonMovieTheme {
                 val navController = rememberNavController()
+                val scaffoldState = rememberScaffoldState()
                 Scaffold(
+                    scaffoldState = scaffoldState,
+                    drawerContent = {
+                        AppDrawer()
+                    },
                     bottomBar = {
                         HomeBottomNavigation(
                             navController = navController, items = listOf(
@@ -45,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                             title = { Text(text = "AppBar") },
                             navigationIcon = {
                                 IconButton(
-                                    onClick = { /* todo */ }
+                                    onClick = { scaffoldState.drawerState.open() }
                                 ) {
                                     Icon(
                                         imageVector = Icons.Outlined.Menu

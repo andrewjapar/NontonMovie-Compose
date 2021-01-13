@@ -15,6 +15,7 @@ fun NontonMovieTheme(
     MaterialTheme(
         colors = NontonMovieColors,
         typography = NontonMovieTypography,
+        shapes = NontonMovieShapes,
         content = content
     )
 }
