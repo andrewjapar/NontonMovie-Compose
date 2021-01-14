@@ -16,8 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dev.andrewjap.nontonmovie.R
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -27,17 +29,18 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun AppDrawer() {
     Column {
+        Spacer(Modifier.preferredHeight(16.dp))
         DrawerItem(
             icon = Icons.Filled.AccountCircle,
-            title = "Log in",
-            subtitle = "For a better experience",
+            title = stringResource(id = R.string.lbl_log_in),
+            subtitle = stringResource(id = R.string.lbl_log_in_caption),
             isSelected = true,
             action = { }
         )
-
+        Spacer(Modifier.preferredHeight(16.dp))
         DrawerItem(
             icon = Icons.Filled.Settings,
-            title = "Settings",
+            title = stringResource(id = R.string.lbl_settings),
             isSelected = false,
             action = { }
         )
@@ -54,21 +57,21 @@ fun DrawerItem(
     action: () -> Unit = {},
 ) {
     val colors = MaterialTheme.colors
-    val imageAlpha = if (isSelected) {
-        1f
-    } else {
-        0.6f
-    }
-    val textIconColor = if (isSelected) {
-        colors.primary
-    } else {
-        colors.onSurface.copy(alpha = 0.6f)
-    }
-    val backgroundColor = if (isSelected) {
-        colors.primary.copy(alpha = 0.12f)
-    } else {
-        Color.Transparent
-    }
+
+    val imageAlpha = if (isSelected) 1f
+    else 0.6f
+
+    val imageSize = if (subtitle.isNullOrBlank()) 24.dp
+    else 36.dp
+
+    val rowPadding = if (subtitle.isNullOrBlank()) 6.dp
+    else 0.dp
+
+    val textIconColor = if (isSelected) colors.primary
+    else colors.onSurface.copy(alpha = 0.6f)
+
+    val backgroundColor = if (isSelected) colors.primary.copy(alpha = 0.12f)
+    else Color.Transparent
 
     val surfaceModifier = modifier
         .padding(8.dp)
@@ -84,13 +87,16 @@ fun DrawerItem(
         ) {
             Image(
                 imageVector = icon,
-                colorFilter = ColorFilter.tint(textIconColor),
+                colorFilter = ColorFilter.tint(Color.White),
                 alpha = imageAlpha,
                 modifier = Modifier
-                    .preferredWidth(36.dp)
-                    .preferredHeight(36.dp)
+                    .padding(rowPadding)
+                    .preferredWidth(imageSize)
+                    .preferredHeight(imageSize)
             )
+
             Spacer(Modifier.preferredWidth(12.dp))
+
             Column {
                 Text(
                     text = title,
@@ -104,8 +110,14 @@ fun DrawerItem(
                     )
                 }
             }
-            Spacer(Modifier.weight(1f))
-            Image(imageVector = Icons.Default.KeyboardArrowRight)
+
+            if (!subtitle.isNullOrBlank()) {
+                Spacer(Modifier.weight(1f))
+                Image(
+                    imageVector = Icons.Default.KeyboardArrowRight,
+                    colorFilter = ColorFilter.tint(Color.White)
+                )
+            }
         }
     }
 }

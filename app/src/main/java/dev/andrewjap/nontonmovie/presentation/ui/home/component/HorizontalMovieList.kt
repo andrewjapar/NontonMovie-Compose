@@ -42,7 +42,7 @@ fun HorizontalMovieList(
             items(items) { item ->
                 PortraitMovieItem(
                     movie = item,
-                    modifier = Modifier.padding(start = 4.dp),
+                    modifier = Modifier.padding(start = 8.dp),
                     onItemClicked = { Log.d("testo", "Horizontal") })
             }
         }
