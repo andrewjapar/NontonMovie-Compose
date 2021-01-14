@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
 import dagger.hilt.android.AndroidEntryPoint
 import dev.andrewjap.nontonmovie.presentation.ui.home.HomeViewModel
-import dev.andrewjap.nontonmovie.presentation.ui.home.component.MainScreen
+import dev.andrewjap.nontonmovie.presentation.ui.home.component.MainApp
 import dev.andrewjap.nontonmovie.presentation.ui.theme.NontonMovieTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -20,10 +20,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NontonMovieTheme {
-                MainScreen(
+                MainApp(
                     homeViewModel = viewModel
                 )
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (!viewModel.onBack()) {
+            super.onBackPressed()
         }
     }
 }

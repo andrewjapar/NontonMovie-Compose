@@ -8,6 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.R
+import dev.andrewjap.nontonmovie.presentation.ui.home.Screen
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -27,7 +29,9 @@ import dev.andrewjap.nontonmovie.R
  */
 
 @Composable
-fun AppDrawer() {
+fun AppDrawer(
+    navigateTo: (Screen) -> Unit
+) {
     Column {
         Spacer(Modifier.preferredHeight(16.dp))
         DrawerItem(
@@ -39,10 +43,16 @@ fun AppDrawer() {
         )
         Spacer(Modifier.preferredHeight(16.dp))
         DrawerItem(
+            icon = Icons.Filled.Home,
+            title = stringResource(id = R.string.lbl_home),
+            isSelected = false,
+            action = { navigateTo.invoke(Screen.Home) }
+        )
+        DrawerItem(
             icon = Icons.Filled.Settings,
             title = stringResource(id = R.string.lbl_settings),
             isSelected = false,
-            action = { }
+            action = { navigateTo.invoke(Screen.Settings) }
         )
     }
 }
