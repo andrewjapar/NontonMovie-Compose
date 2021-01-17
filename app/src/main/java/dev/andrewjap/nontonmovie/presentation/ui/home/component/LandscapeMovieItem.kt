@@ -65,7 +65,7 @@ fun LandscapeMovieItem(
             )
 
             Text(
-                text = "${movie.name}: ${movie.description}",
+                text = "${movie.title}: ${movie.description}",
                 color = Color.White,
                 maxLines = 1,
                 fontWeight = FontWeight.Medium,

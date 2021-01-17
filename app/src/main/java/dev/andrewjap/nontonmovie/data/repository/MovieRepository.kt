@@ -25,7 +25,7 @@ class MovieRepositoryImpl(
             movieService.getNowPlayingMovies().results?.map {
                 Movie(
                     id = it.id,
-                    name = it.title ?: "",
+                    title = it.title ?: "",
                     description = it.overview ?: "",
                     portraitImage = BuildConfig.MOVIE_IMAGE_PATH + it.posterPath,
                     landscapeImage = BuildConfig.MOVIE_IMAGE_PATH + it.backdropPath

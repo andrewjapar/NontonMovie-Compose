@@ -3,6 +3,7 @@ package dev.andrewjap.nontonmovie.presentation.ui.home.component
 import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.MaterialTheme
@@ -12,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.domain.entity.Movie
+import dev.andrewjap.nontonmovie.presentation.ui.home.component.HorizontalMovieListType.PORTRAIT
+import dev.andrewjap.nontonmovie.presentation.ui.home.component.HorizontalMovieListType.ROUNDED
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -23,10 +26,13 @@ fun HorizontalMovieList(
     items: List<Movie>,
     modifier: Modifier = Modifier,
     title: String? = null,
+    type: HorizontalMovieListType = PORTRAIT,
     paddingContent: Dp = 0.dp
 ) {
     Column(
-        modifier = modifier.padding(bottom = 16.dp)
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(bottom = 16.dp)
     ) {
 
         if (!title.isNullOrBlank()) Text(
@@ -40,11 +46,23 @@ fun HorizontalMovieList(
             contentPadding = PaddingValues(start = paddingContent, end = paddingContent)
         ) {
             items(items) { item ->
-                PortraitMovieItem(
-                    movie = item,
-                    modifier = Modifier.padding(start = 8.dp),
-                    onItemClicked = { Log.d("testo", "Horizontal") })
+                when (type) {
+                    PORTRAIT -> {
+                        PortraitMovieItem(
+                            movie = item,
+                            modifier = Modifier.padding(start = 8.dp),
+                            onItemClicked = { Log.d("testo", "Horizontal") })
+                    }
+                    ROUNDED -> {
+                        RoundedMovieItem(
+                            movie = item,
+                            modifier = Modifier.padding(start = 8.dp),
+                            onItemClicked = { Log.d("testo", "Horizontal") })
+                    }
+                }
             }
         }
     }
 }
+
+enum class HorizontalMovieListType { PORTRAIT, ROUNDED }
