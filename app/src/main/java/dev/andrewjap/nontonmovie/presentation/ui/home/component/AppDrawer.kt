@@ -1,5 +1,6 @@
 package dev.andrewjap.nontonmovie.presentation.ui.home.component
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -17,10 +18,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.R
+import dev.andrewjap.nontonmovie.TestActivity
 import dev.andrewjap.nontonmovie.presentation.ui.home.Screen
 
 /**
@@ -30,8 +33,11 @@ import dev.andrewjap.nontonmovie.presentation.ui.home.Screen
 
 @Composable
 fun AppDrawer(
-    navigateTo: (Screen) -> Unit
+    navigateTo: (Screen) -> Unit,
+    dismiss: () -> Unit
 ) {
+    val context = AmbientContext.current
+
     Column {
         Spacer(Modifier.preferredHeight(16.dp))
         DrawerItem(
@@ -52,7 +58,12 @@ fun AppDrawer(
             icon = Icons.Filled.Settings,
             title = stringResource(id = R.string.lbl_settings),
             isSelected = false,
-            action = { navigateTo.invoke(Screen.Settings) }
+            action = {
+                context.startActivity(
+                    Intent(context, TestActivity::class.java)
+                )
+                dismiss.invoke()
+            }
         )
     }
 }

@@ -16,6 +16,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 fun MainApp(
     homeViewModel: HomeViewModel
 ) {
+
     Crossfade(current = homeViewModel.currentScreen) { screen ->
         when (screen) {
             Screen.Home -> MainScreen(

@@ -33,7 +33,8 @@ fun MainScreen(
         scaffoldState = scaffoldState,
         drawerContent = {
             AppDrawer(
-                navigateTo = navigateTo
+                navigateTo = navigateTo,
+                dismiss = scaffoldState.drawerState::close
             )
         },
         bottomBar = {
