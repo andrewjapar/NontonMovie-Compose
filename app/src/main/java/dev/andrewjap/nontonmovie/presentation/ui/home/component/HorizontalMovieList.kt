@@ -13,8 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.domain.entity.Movie
-import dev.andrewjap.nontonmovie.presentation.ui.home.component.HorizontalMovieListType.PORTRAIT
-import dev.andrewjap.nontonmovie.presentation.ui.home.component.HorizontalMovieListType.ROUNDED
+import dev.andrewjap.nontonmovie.presentation.ui.home.component.HorizontalMovieListType.*
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -59,10 +58,16 @@ fun HorizontalMovieList(
                             modifier = Modifier.padding(start = 8.dp),
                             onItemClicked = { Log.d("testo", "Horizontal") })
                     }
+                    LANDSCAPE -> {
+                        LandscapeMovieItem(
+                            movie = item,
+                            modifier = Modifier.padding(start = 8.dp),
+                            onItemClicked = { Log.d("testo", "Horizontal") })
+                    }
                 }
             }
         }
     }
 }
 
-enum class HorizontalMovieListType { PORTRAIT, ROUNDED }
+enum class HorizontalMovieListType { PORTRAIT, LANDSCAPE, ROUNDED }

@@ -34,7 +34,6 @@ fun LandscapeMovieItem(
     Column(
         modifier
             .clickable { onItemClicked.invoke(movie) }
-            .padding(4.dp),
     ) {
         Box(
             modifier = Modifier
