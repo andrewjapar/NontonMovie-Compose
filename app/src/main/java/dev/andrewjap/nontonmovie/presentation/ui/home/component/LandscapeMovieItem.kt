@@ -31,23 +31,19 @@ fun LandscapeMovieItem(
     onItemClicked: (Movie) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier
-            .clickable { onItemClicked.invoke(movie) }
-    ) {
+    Column(modifier) {
         Box(
             modifier = Modifier
                 .weight(1f)
                 .aspectRatio(1.77f)
                 .align(Alignment.CenterHorizontally)
+                .clip(MaterialTheme.shapes.small)
+                .clickable { onItemClicked.invoke(movie) }
         ) {
             GlideImage(
                 data = movie.landscapeImage,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .clip(MaterialTheme.shapes.small)
-
+                modifier = Modifier.fillMaxSize()
             )
 
             Box(
@@ -56,7 +52,7 @@ fun LandscapeMovieItem(
                     .fillMaxHeight()
                     .background(
                         Brush.verticalGradient(
-                            listOf(Color.Transparent, Color.Black.copy(alpha = 0.5f)),
+                            listOf(Color.Transparent, Color.Black.copy(alpha = 0.75f)),
                             0f,
                             500f
                         )
