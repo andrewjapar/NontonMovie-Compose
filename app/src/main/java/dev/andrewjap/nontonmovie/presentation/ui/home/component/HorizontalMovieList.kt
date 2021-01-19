@@ -1,6 +1,5 @@
 package dev.andrewjap.nontonmovie.presentation.ui.home.component
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,6 +24,7 @@ fun HorizontalMovieList(
     items: List<Movie>,
     modifier: Modifier = Modifier,
     title: String? = null,
+    onItemClicked: (Movie) -> Unit = {},
     type: HorizontalMovieListType = PORTRAIT,
     paddingContent: Dp = 0.dp
 ) {
@@ -50,19 +50,19 @@ fun HorizontalMovieList(
                         PortraitMovieItem(
                             movie = item,
                             modifier = Modifier.padding(start = 8.dp),
-                            onItemClicked = { Log.d("testo", "Horizontal") })
+                            onItemClicked = { onItemClicked.invoke(item) })
                     }
                     ROUNDED -> {
                         RoundedMovieItem(
                             movie = item,
                             modifier = Modifier.padding(start = 8.dp),
-                            onItemClicked = { Log.d("testo", "Horizontal") })
+                            onItemClicked = { onItemClicked.invoke(item) })
                     }
                     LANDSCAPE -> {
                         LandscapeMovieItem(
                             movie = item,
                             modifier = Modifier.padding(start = 8.dp),
-                            onItemClicked = { Log.d("testo", "Horizontal") })
+                            onItemClicked = { onItemClicked.invoke(item) })
                     }
                 }
             }

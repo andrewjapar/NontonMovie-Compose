@@ -1,6 +1,5 @@
 package dev.andrewjap.nontonmovie.presentation.ui.home.component
 
-import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -19,7 +18,8 @@ import dev.andrewjap.nontonmovie.presentation.util.PagerState
 @Composable
 fun HeadlineMovieSlider(
     items: List<Movie>,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
+    onItemClicked: (Movie) -> Unit = {},
     pagerState: PagerState = run {
         val clock = AmbientAnimationClock.current
         remember(clock) { PagerState(clock) }
@@ -31,7 +31,7 @@ fun HeadlineMovieSlider(
             LandscapeMovieItem(
                 movie = items[page],
                 modifier = Modifier.padding(4.dp),
-                onItemClicked = { Log.d("testo", "clicked") }
+                onItemClicked = { onItemClicked.invoke(items[page]) }
             )
         }
     }
