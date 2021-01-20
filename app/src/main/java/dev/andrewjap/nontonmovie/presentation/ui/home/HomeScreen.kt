@@ -35,7 +35,7 @@ fun HomeScreen(
             HeadlineMovieSlider(
                 items = viewState.popularMovies,
                 modifier = Modifier
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp)
+                    .padding(start = 16.dp, end = 16.dp)
                     .fillMaxWidth()
                     .preferredHeight(boxWidth.div(1.77f))
             )

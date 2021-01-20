@@ -7,6 +7,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
 import dev.andrewjap.nontonmovie.R
@@ -54,6 +55,7 @@ fun MainScreen(
         Column(modifier = Modifier.padding(innerPadding)) {
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.app_name)) },
+                backgroundColor = Color.Transparent,
                 navigationIcon = {
                     IconButton(onClick = { scaffoldState.drawerState.open() }) {
                         Icon(imageVector = Icons.Outlined.Menu)
