@@ -18,7 +18,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.domain.entity.Movie
-import dev.chrisbanes.accompanist.glide.GlideImage
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -38,9 +38,10 @@ fun LandscapeMovieItem(
                 .aspectRatio(1.77f)
                 .align(Alignment.CenterHorizontally)
                 .clip(MaterialTheme.shapes.small)
+                .background(Color.Gray)
                 .clickable { onItemClicked.invoke(movie) }
         ) {
-            GlideImage(
+            CoilImage(
                 data = movie.landscapeImage,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
@@ -81,9 +82,13 @@ fun PreviewLandscapeMovieItem() {
             1,
             "Herooooo",
             "asd",
-            "https://i.insider.com/5f5761f9e6ff30001d4e7665?width=1100&format=jpeg",
-            "https://i.insider.com/5f5761f9e6ff30001d4e7665?width=1100&format=jpeg"
+            "https://www.cbronline.com/wp-content/uploads/2016/06/what-is-URL-770x503.jpg",
+            "https://www.cbronline.com/wp-content/uploads/2016/06/what-is-URL-770x503.jpg"
         )
     }
-    LandscapeMovieItem(movie = movie, onItemClicked = {}, modifier = Modifier.fillMaxWidth())
+    LandscapeMovieItem(
+        movie = movie,
+        onItemClicked = {},
+        modifier = Modifier.preferredHeight(100.dp)
+    )
 }

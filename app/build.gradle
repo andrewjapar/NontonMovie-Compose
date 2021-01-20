@@ -92,5 +92,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-beta01"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
 
-    implementation "dev.chrisbanes.accompanist:accompanist-glide:$glideVersion"
+    implementation "dev.chrisbanes.accompanist:accompanist-coil:$glideVersion"
 }

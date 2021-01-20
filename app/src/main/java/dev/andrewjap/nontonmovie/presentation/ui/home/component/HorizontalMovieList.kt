@@ -8,7 +8,9 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.domain.entity.Movie
@@ -71,3 +73,72 @@ fun HorizontalMovieList(
 }
 
 enum class HorizontalMovieListType { PORTRAIT, LANDSCAPE, ROUNDED }
+
+@Preview("Rounded List")
+@Composable
+fun PreviewRoundedMovieList() {
+    val movies = remember {
+        listOf(
+            Movie(
+                1,
+                "Herooooo",
+                "asd",
+                "https://i.picsum.photos/id/513/200/200.jpg",
+                "https://i.picsum.photos/id/513/200/200.jpg"
+            )
+        )
+    }
+
+    HorizontalMovieList(
+        items = movies + movies + movies,
+        title = "Popular Shows",
+        type = ROUNDED,
+        paddingContent = 8.dp
+    )
+}
+
+@Preview("Portrait List")
+@Composable
+fun PreviewPortraitMovieList() {
+    val movies = remember {
+        listOf(
+            Movie(
+                1,
+                "Herooooo",
+                "asd",
+                "https://i.picsum.photos/id/513/200/200.jpg",
+                "https://i.picsum.photos/id/513/200/200.jpg"
+            )
+        )
+    }
+
+    HorizontalMovieList(
+        items = movies + movies + movies,
+        title = "Popular Shows",
+        type = PORTRAIT,
+        paddingContent = 8.dp
+    )
+}
+
+@Preview("Landscape List")
+@Composable
+fun PreviewLandscapeMovieList() {
+    val movies = remember {
+        listOf(
+            Movie(
+                1,
+                "Herooooo",
+                "asd",
+                "https://i.picsum.photos/id/513/200/200.jpg",
+                "https://i.picsum.photos/id/513/200/200.jpg"
+            )
+        )
+    }
+
+    HorizontalMovieList(
+        items = movies + movies + movies,
+        title = "Popular Shows",
+        type = LANDSCAPE,
+        paddingContent = 8.dp
+    )
+}

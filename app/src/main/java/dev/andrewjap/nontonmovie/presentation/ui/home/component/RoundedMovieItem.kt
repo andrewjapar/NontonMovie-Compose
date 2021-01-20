@@ -1,21 +1,24 @@
 package dev.andrewjap.nontonmovie.presentation.ui.home.component
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.andrewjap.nontonmovie.domain.entity.Movie
-import dev.chrisbanes.accompanist.glide.GlideImage
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -44,9 +47,10 @@ fun RoundedMovieItem(
                 .aspectRatio(1f)
                 .border(BorderStroke(1.dp, Color.Blue), CircleShape)
                 .clip(CircleShape)
+                .background(Color.Gray)
                 .clickable { onItemClicked.invoke(movie) }
         ) {
-            GlideImage(
+            CoilImage(
                 data = movie.portraitImage,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -68,4 +72,23 @@ fun RoundedMovieItem(
                 }
         )
     }
+}
+
+@Preview
+@Composable
+fun PreviewRoundedMovieItem() {
+    val movie = remember {
+        Movie(
+            1,
+            "Herooooo",
+            "asd",
+            "https://i.picsum.photos/id/513/200/200.jpg",
+            "https://i.picsum.photos/id/513/200/200.jpg"
+        )
+    }
+    RoundedMovieItem(
+        movie = movie,
+        onItemClicked = {},
+        modifier = Modifier.preferredHeight(100.dp)
+    )
 }
