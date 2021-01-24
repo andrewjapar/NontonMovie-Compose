@@ -1,20 +1,16 @@
 package dev.andrewjap.nontonmovie.presentation.component
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.Crossfade
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
@@ -41,7 +37,7 @@ fun HomeBottomNavigation(
         val currentRoute = currentRoute(navController = navController)
         items.forEach {
             BottomNavigationItem(
-                icon = { Icon(imageVector = it.icon) },
+                icon = { Icon(imageVector = vectorResource(id = it.iconId)) },
                 label = {
                     Text(
                         text = stringResource(it.resourceId),
@@ -106,14 +102,16 @@ private fun currentRoute(navController: NavHostController): String? {
     return navBackStackEntry?.arguments?.getString(KEY_ROUTE)
 }
 
-
 sealed class BottomNavigationScreens(
     val route: String,
     @StringRes val resourceId: Int,
-    val icon: ImageVector
+    @DrawableRes val iconId: Int
 ) {
-    object Home : BottomNavigationScreens("Home", R.string.lbl_home, Icons.Filled.Face)
-    object TV : BottomNavigationScreens("TV", R.string.lbl_tv, Icons.Filled.AccountBox)
-    object Movies : BottomNavigationScreens("Movies", R.string.lbl_movies, Icons.Filled.Send)
-    object Sports : BottomNavigationScreens("Sports", R.string.lbl_sports, Icons.Filled.DateRange)
+    object Home : BottomNavigationScreens("Home", R.string.lbl_home, R.drawable.ic_home)
+    object TV :
+        BottomNavigationScreens("TV", R.string.lbl_tv, R.drawable.ic_live_tv)
+
+    object Movies : BottomNavigationScreens("Movies", R.string.lbl_movies, R.drawable.ic_movie)
+    object Sports :
+        BottomNavigationScreens("Sports", R.string.lbl_sports, R.drawable.ic_sports_soccer)
 }
