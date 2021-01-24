@@ -32,6 +32,6 @@ interface ApiService {
     @GET("tv/top_rated?language=en-US")
     suspend fun getTopRatedTvShows(): TvShowListResponse
 
-    @GET("tv/latest?language=en-US")
+    @GET("tv/on_the_air?language=en-US")
     suspend fun getLatestTvShows(): TvShowListResponse
 }
