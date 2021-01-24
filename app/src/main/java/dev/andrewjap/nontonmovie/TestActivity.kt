@@ -15,7 +15,7 @@ class TestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TestScreen(navigateTo = { })
+            TestScreen()
         }
     }
 }

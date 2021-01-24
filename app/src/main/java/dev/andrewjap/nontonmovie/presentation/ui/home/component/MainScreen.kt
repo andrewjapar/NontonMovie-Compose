@@ -12,7 +12,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
 import dev.andrewjap.nontonmovie.R
 import dev.andrewjap.nontonmovie.presentation.ui.home.HomeViewModel
-import dev.andrewjap.nontonmovie.presentation.ui.home.Screen
 import dev.andrewjap.nontonmovie.presentation.util.BottomNavigationScreens
 import dev.andrewjap.nontonmovie.presentation.util.HomeBottomNavigation
 import dev.andrewjap.nontonmovie.presentation.util.MainScreenNavigationConfigurations
@@ -26,8 +25,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Composable
 fun MainScreen(
-    homeViewModel: HomeViewModel,
-    navigateTo: (Screen) -> Unit
+    homeViewModel: HomeViewModel
 ) {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
@@ -36,7 +34,6 @@ fun MainScreen(
         scaffoldState = scaffoldState,
         drawerContent = {
             AppDrawer(
-                navigateTo = navigateTo,
                 dismiss = scaffoldState.drawerState::close
             )
         },

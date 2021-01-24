@@ -24,7 +24,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.R
 import dev.andrewjap.nontonmovie.TestActivity
-import dev.andrewjap.nontonmovie.presentation.ui.home.Screen
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -33,7 +32,6 @@ import dev.andrewjap.nontonmovie.presentation.ui.home.Screen
 
 @Composable
 fun AppDrawer(
-    navigateTo: (Screen) -> Unit,
     dismiss: () -> Unit
 ) {
     val context = AmbientContext.current
@@ -52,7 +50,7 @@ fun AppDrawer(
             icon = Icons.Filled.Home,
             title = stringResource(id = R.string.lbl_home),
             isSelected = false,
-            action = { navigateTo.invoke(Screen.Home) }
+            action = { }
         )
         DrawerItem(
             icon = Icons.Filled.Settings,

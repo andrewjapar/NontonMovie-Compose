@@ -1,6 +1,7 @@
 package dev.andrewjap.nontonmovie.presentation.util
 
 import androidx.annotation.StringRes
+import androidx.compose.animation.Crossfade
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -15,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import dev.andrewjap.nontonmovie.R
@@ -55,6 +57,7 @@ fun HomeBottomNavigation(
     }
 }
 
+@Suppress("NO_REFLECTION_IN_CLASS_PATH")
 @ExperimentalCoroutinesApi
 @Composable
 fun MainScreenNavigationConfigurations(
@@ -62,21 +65,29 @@ fun MainScreenNavigationConfigurations(
     viewModel: HomeViewModel
 ) {
     NavHost(navController, startDestination = BottomNavigationScreens.Home.route) {
-        composable(BottomNavigationScreens.Home.route) {
-            HomeScreen(viewModel)
-        }
-        composable(BottomNavigationScreens.TV.route) {
-            HomeScreen(viewModel)
-        }
-        composable(BottomNavigationScreens.Movies.route) {
-            HomeScreen(viewModel)
-        }
-        composable(BottomNavigationScreens.Sports.route) {
-            HomeScreen(viewModel)
-        }
+        BottomNavigationScreens::class.sealedSubclasses
+            .mapNotNull { it.objectInstance }
+            .forEach { menu ->
+                composable(menu.route) {
+                    Contents(navBackStackEntry = it, viewModel = viewModel)
+                }
+            }
     }
 }
 
+@ExperimentalCoroutinesApi
+@Composable
+fun Contents(navBackStackEntry: NavBackStackEntry, viewModel: HomeViewModel) {
+    Crossfade(current = navBackStackEntry) {
+        when (it.arguments?.getString(KEY_ROUTE)) {
+            BottomNavigationScreens.Home.route -> HomeScreen(viewModel)
+            BottomNavigationScreens.TV.route -> HomeScreen(viewModel)
+            BottomNavigationScreens.Movies.route -> HomeScreen(viewModel)
+            BottomNavigationScreens.Sports.route -> HomeScreen(viewModel)
+            else -> Text("UNKNOWN PAGE")
+        }
+    }
+}
 
 @Composable
 private fun currentRoute(navController: NavHostController): String? {
@@ -90,11 +101,8 @@ sealed class BottomNavigationScreens(
     @StringRes val resourceId: Int,
     val icon: ImageVector
 ) {
-    object Home :
-        BottomNavigationScreens("Home", R.string.lbl_home, Icons.Filled.Face)
-
+    object Home : BottomNavigationScreens("Home", R.string.lbl_home, Icons.Filled.Face)
     object TV : BottomNavigationScreens("TV", R.string.lbl_tv, Icons.Filled.AccountBox)
     object Movies : BottomNavigationScreens("Movies", R.string.lbl_movies, Icons.Filled.Send)
-    object Sports :
-        BottomNavigationScreens("Sports", R.string.lbl_sports, Icons.Filled.DateRange)
+    object Sports : BottomNavigationScreens("Sports", R.string.lbl_sports, Icons.Filled.DateRange)
 }

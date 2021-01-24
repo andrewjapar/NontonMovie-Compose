@@ -1,9 +1,6 @@
 package dev.andrewjap.nontonmovie.presentation.ui.home.component
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -116,7 +113,8 @@ fun PreviewPortraitMovieList() {
         items = movies + movies + movies,
         title = "Popular Shows",
         type = PORTRAIT,
-        paddingContent = 8.dp
+        paddingContent = 8.dp,
+        modifier = Modifier.preferredHeight(180.dp)
     )
 }
 
@@ -139,6 +137,7 @@ fun PreviewLandscapeMovieList() {
         items = movies + movies + movies,
         title = "Popular Shows",
         type = LANDSCAPE,
-        paddingContent = 8.dp
+        paddingContent = 8.dp,
+        modifier = Modifier.preferredHeight(180.dp)
     )
 }
