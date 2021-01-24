@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.ui.home.component
+package dev.andrewjap.nontonmovie.presentation.component
 
 import android.content.Intent
 import androidx.compose.foundation.Image
@@ -23,7 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.R
-import dev.andrewjap.nontonmovie.TestActivity
+import dev.andrewjap.nontonmovie.presentation.ui.login.TestActivity
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)

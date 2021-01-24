@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.ui.home.component
+package dev.andrewjap.nontonmovie.presentation.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.andrewjap.nontonmovie.domain.entity.Movie
-import dev.andrewjap.nontonmovie.presentation.ui.home.component.HorizontalMovieListType.*
+import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieListType.*
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)

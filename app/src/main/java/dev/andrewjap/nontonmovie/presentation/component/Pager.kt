@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.andrewjap.nontonmovie.presentation.util
+package dev.andrewjap.nontonmovie.presentation.component
 
 import androidx.compose.animation.AnimatedFloatModel
 import androidx.compose.animation.core.AnimationClockObservable

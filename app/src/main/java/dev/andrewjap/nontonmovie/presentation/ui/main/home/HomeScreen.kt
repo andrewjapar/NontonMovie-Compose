@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.ui.home
+package dev.andrewjap.nontonmovie.presentation.ui.main.home
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
@@ -12,9 +12,9 @@ import androidx.compose.ui.layout.WithConstraints
 import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
-import dev.andrewjap.nontonmovie.presentation.ui.home.component.HeadlineMovieSlider
-import dev.andrewjap.nontonmovie.presentation.ui.home.component.HorizontalMovieList
-import dev.andrewjap.nontonmovie.presentation.ui.home.component.HorizontalMovieListType
+import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieList
+import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieListType
+import dev.andrewjap.nontonmovie.presentation.component.HeadlineMovieSlider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi

@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.util
+package dev.andrewjap.nontonmovie.presentation.component
 
 import androidx.annotation.StringRes
 import androidx.compose.animation.Crossfade
@@ -20,8 +20,8 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import dev.andrewjap.nontonmovie.R
-import dev.andrewjap.nontonmovie.presentation.ui.home.HomeScreen
-import dev.andrewjap.nontonmovie.presentation.ui.home.HomeViewModel
+import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeScreen
+import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**

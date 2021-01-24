@@ -1,9 +1,8 @@
-package dev.andrewjap.nontonmovie
+package dev.andrewjap.nontonmovie.presentation.ui.login
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
-import dev.andrewjap.nontonmovie.presentation.ui.home.component.TestScreen
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)

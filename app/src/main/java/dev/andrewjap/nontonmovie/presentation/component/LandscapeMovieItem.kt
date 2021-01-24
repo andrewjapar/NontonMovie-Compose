@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.ui.home.component
+package dev.andrewjap.nontonmovie.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

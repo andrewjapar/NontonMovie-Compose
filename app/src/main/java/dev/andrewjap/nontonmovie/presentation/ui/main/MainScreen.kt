@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.ui.home.component
+package dev.andrewjap.nontonmovie.presentation.ui.main
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -11,10 +11,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
 import dev.andrewjap.nontonmovie.R
-import dev.andrewjap.nontonmovie.presentation.ui.home.HomeViewModel
-import dev.andrewjap.nontonmovie.presentation.util.BottomNavigationScreens
-import dev.andrewjap.nontonmovie.presentation.util.HomeBottomNavigation
-import dev.andrewjap.nontonmovie.presentation.util.MainScreenNavigationConfigurations
+import dev.andrewjap.nontonmovie.presentation.component.AppDrawer
+import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeViewModel
+import dev.andrewjap.nontonmovie.presentation.component.BottomNavigationScreens
+import dev.andrewjap.nontonmovie.presentation.component.HomeBottomNavigation
+import dev.andrewjap.nontonmovie.presentation.component.MainScreenNavigationConfigurations
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**

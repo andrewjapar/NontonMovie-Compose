@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.ui.home
+package dev.andrewjap.nontonmovie.presentation.ui.main.home
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
