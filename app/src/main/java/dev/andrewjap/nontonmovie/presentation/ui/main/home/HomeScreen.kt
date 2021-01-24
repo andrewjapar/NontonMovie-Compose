@@ -67,7 +67,7 @@ fun HomeScreen(
                     .preferredHeight(
                         boxWidth
                             .div(3)
-                            .div(0.72f)
+                            .div(0.67f)
                     )
             )
 
@@ -81,7 +81,7 @@ fun HomeScreen(
                     .preferredHeight(
                         boxWidth
                             .div(3)
-                            .div(0.72f)
+                            .div(0.67f)
                     )
             )
 
@@ -94,7 +94,7 @@ fun HomeScreen(
                     .preferredHeight(
                         boxWidth
                             .div(3)
-                            .div(0.72f)
+                            .div(0.67f)
                     )
             )
         }

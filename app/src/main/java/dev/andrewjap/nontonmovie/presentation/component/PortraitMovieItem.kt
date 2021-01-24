@@ -31,7 +31,7 @@ fun PortraitMovieItem(
         Box(
             modifier = Modifier
                 .weight(1f)
-                .aspectRatio(0.75f)
+                .aspectRatio(0.70f)
                 .align(Alignment.CenterHorizontally)
                 .clip(MaterialTheme.shapes.small)
                 .background(Color.Gray)

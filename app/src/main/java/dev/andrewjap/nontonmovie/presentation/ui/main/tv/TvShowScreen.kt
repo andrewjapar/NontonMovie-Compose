@@ -61,20 +61,20 @@ fun TvShowScreen(
                     .preferredHeight(
                         boxWidth
                             .div(3)
-                            .div(0.72f)
+                            .div(0.67f)
                     )
             )
 
             HorizontalMovieList(
                 items = viewState.topRatedTvShow,
-                title = "Top Rated Tv Shows",
+                title = "Top Rated TV Shows",
                 paddingContent = 8.dp,
                 modifier = Modifier
                     .fillMaxWidth()
                     .preferredHeight(
                         boxWidth
                             .div(3)
-                            .div(0.72f)
+                            .div(0.67f)
                     )
             )
 
@@ -87,7 +87,7 @@ fun TvShowScreen(
                     .preferredHeight(
                         boxWidth
                             .div(3)
-                            .div(0.72f)
+                            .div(0.67f)
                     )
             )
         }
