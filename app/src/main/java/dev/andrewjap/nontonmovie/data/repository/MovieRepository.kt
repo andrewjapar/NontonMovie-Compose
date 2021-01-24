@@ -1,8 +1,8 @@
 package dev.andrewjap.nontonmovie.data.repository
 
 import dev.andrewjap.nontonmovie.BuildConfig
-import dev.andrewjap.nontonmovie.data.api.MovieService
-import dev.andrewjap.nontonmovie.domain.entity.Movie
+import dev.andrewjap.nontonmovie.data.api.ApiService
+import dev.andrewjap.nontonmovie.domain.entity.Film.Movie
 import dev.andrewjap.nontonmovie.extension.safeApiCall
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -17,12 +17,12 @@ interface MovieRepository {
 }
 
 class MovieRepositoryImpl(
-    private val movieService: MovieService
+    private val apiService: ApiService
 ) : MovieRepository {
 
     override suspend fun get(): Flow<List<Movie>> {
         return safeApiCall(Dispatchers.IO) {
-            movieService.getNowPlayingMovies().results?.map {
+            apiService.getNowPlayingMovies().results?.map {
                 Movie(
                     id = it.id,
                     title = it.title ?: "",

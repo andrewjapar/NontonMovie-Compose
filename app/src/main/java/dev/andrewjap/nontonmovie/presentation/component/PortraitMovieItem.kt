@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.andrewjap.nontonmovie.domain.entity.Movie
+import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 /**
@@ -23,8 +23,8 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun PortraitMovieItem(
-    movie: Movie,
-    onItemClicked: (Movie) -> Unit,
+    movie: Film,
+    onItemClicked: (Film) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
@@ -51,7 +51,7 @@ fun PortraitMovieItem(
 @Composable
 fun PreviewPortraitMovieItem() {
     val movie = remember {
-        Movie(
+        Film.Movie(
             1,
             "Herooooo",
             "asd",

@@ -6,7 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AmbientAnimationClock
 import androidx.compose.ui.unit.dp
-import dev.andrewjap.nontonmovie.domain.entity.Movie
+import dev.andrewjap.nontonmovie.domain.entity.Film
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -15,9 +15,9 @@ import dev.andrewjap.nontonmovie.domain.entity.Movie
 
 @Composable
 fun HeadlineMovieSlider(
-    items: List<Movie>,
+    items: List<Film>,
     modifier: Modifier = Modifier,
-    onItemClicked: (Movie) -> Unit = {},
+    onItemClicked: (Film) -> Unit = {},
     pagerState: PagerState = run {
         val clock = AmbientAnimationClock.current
         remember(clock) { PagerState(clock) }

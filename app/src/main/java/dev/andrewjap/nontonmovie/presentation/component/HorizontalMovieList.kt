@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import dev.andrewjap.nontonmovie.domain.entity.Movie
+import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieListType.*
 
 /**
@@ -20,10 +20,10 @@ import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieListType.
 
 @Composable
 fun HorizontalMovieList(
-    items: List<Movie>,
+    items: List<Film>,
     modifier: Modifier = Modifier,
     title: String? = null,
-    onItemClicked: (Movie) -> Unit = {},
+    onItemClicked: (Film) -> Unit = {},
     type: HorizontalMovieListType = PORTRAIT,
     paddingContent: Dp = 0.dp
 ) {
@@ -76,7 +76,7 @@ enum class HorizontalMovieListType { PORTRAIT, LANDSCAPE, ROUNDED }
 fun PreviewRoundedMovieList() {
     val movies = remember {
         listOf(
-            Movie(
+            Film.Movie(
                 1,
                 "Herooooo",
                 "asd",
@@ -99,7 +99,7 @@ fun PreviewRoundedMovieList() {
 fun PreviewPortraitMovieList() {
     val movies = remember {
         listOf(
-            Movie(
+            Film.Movie(
                 1,
                 "Herooooo",
                 "asd",
@@ -123,7 +123,7 @@ fun PreviewPortraitMovieList() {
 fun PreviewLandscapeMovieList() {
     val movies = remember {
         listOf(
-            Movie(
+            Film.Movie(
                 1,
                 "Herooooo",
                 "asd",

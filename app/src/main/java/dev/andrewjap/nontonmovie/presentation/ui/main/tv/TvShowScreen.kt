@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.ui.main.home
+package dev.andrewjap.nontonmovie.presentation.ui.main.tv
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
@@ -19,11 +19,11 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 @Composable
-fun HomeScreen(
-    viewModel: HomeViewModel = viewModel()
+fun TvShowScreen(
+    viewModel: TvShowViewModel = viewModel()
 ) {
 
-    val viewState by viewModel.showMovies.collectAsState()
+    val viewState by viewModel.showTvShows.collectAsState()
 
     if (viewState.isLoading) {
         Box(
@@ -44,7 +44,7 @@ fun HomeScreen(
         ) {
 
             HeadlineMovieSlider(
-                items = viewState.popularMovies,
+                items = viewState.liveTodayTvShow,
                 modifier = Modifier
                     .padding(start = 16.dp, end = 16.dp)
                     .fillMaxWidth()
@@ -52,28 +52,8 @@ fun HomeScreen(
             )
 
             HorizontalMovieList(
-                items = viewState.popularMovies,
-                title = "Popular Shows",
-                type = HorizontalMovieListType.ROUNDED,
-                paddingContent = 8.dp
-            )
-
-            HorizontalMovieList(
-                items = viewState.popularMovies,
-                title = "Hello World",
-                paddingContent = 8.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .preferredHeight(
-                        boxWidth
-                            .div(3)
-                            .div(0.72f)
-                    )
-            )
-
-            HorizontalMovieList(
-                items = viewState.popularMovies,
-                title = "Hello World",
+                items = viewState.popularTvShow,
+                title = "Popular TV Shows",
                 paddingContent = 8.dp,
                 type = HorizontalMovieListType.LANDSCAPE,
                 modifier = Modifier
@@ -86,8 +66,21 @@ fun HomeScreen(
             )
 
             HorizontalMovieList(
-                items = viewState.popularMovies,
-                title = "Hello World",
+                items = viewState.topRatedTvShow,
+                title = "Top Rated Tv Shows",
+                paddingContent = 8.dp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .preferredHeight(
+                        boxWidth
+                            .div(3)
+                            .div(0.72f)
+                    )
+            )
+
+            HorizontalMovieList(
+                items = viewState.latestTvShow,
+                title = "Latest TV Shows",
                 paddingContent = 8.dp,
                 modifier = Modifier
                     .fillMaxWidth()

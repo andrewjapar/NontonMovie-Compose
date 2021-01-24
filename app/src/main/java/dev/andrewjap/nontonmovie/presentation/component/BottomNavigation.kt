@@ -22,6 +22,8 @@ import androidx.navigation.compose.*
 import dev.andrewjap.nontonmovie.R
 import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeScreen
 import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeViewModel
+import dev.andrewjap.nontonmovie.presentation.ui.main.tv.TvShowScreen
+import dev.andrewjap.nontonmovie.presentation.ui.main.tv.TvShowViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
@@ -62,14 +64,19 @@ fun HomeBottomNavigation(
 @Composable
 fun MainScreenNavigationConfigurations(
     navController: NavHostController,
-    viewModel: HomeViewModel
+    homeViewModel: HomeViewModel,
+    tvShowViewModel: TvShowViewModel
 ) {
     NavHost(navController, startDestination = BottomNavigationScreens.Home.route) {
         BottomNavigationScreens::class.sealedSubclasses
             .mapNotNull { it.objectInstance }
             .forEach { menu ->
                 composable(menu.route) {
-                    Contents(navBackStackEntry = it, viewModel = viewModel)
+                    Contents(
+                        navBackStackEntry = it,
+                        homeViewModel = homeViewModel,
+                        tvShowViewModel = tvShowViewModel
+                    )
                 }
             }
     }
@@ -77,13 +84,17 @@ fun MainScreenNavigationConfigurations(
 
 @ExperimentalCoroutinesApi
 @Composable
-fun Contents(navBackStackEntry: NavBackStackEntry, viewModel: HomeViewModel) {
+fun Contents(
+    navBackStackEntry: NavBackStackEntry,
+    homeViewModel: HomeViewModel,
+    tvShowViewModel: TvShowViewModel
+) {
     Crossfade(current = navBackStackEntry) {
         when (it.arguments?.getString(KEY_ROUTE)) {
-            BottomNavigationScreens.Home.route -> HomeScreen(viewModel)
-            BottomNavigationScreens.TV.route -> HomeScreen(viewModel)
-            BottomNavigationScreens.Movies.route -> HomeScreen(viewModel)
-            BottomNavigationScreens.Sports.route -> HomeScreen(viewModel)
+            BottomNavigationScreens.Home.route -> HomeScreen(homeViewModel)
+            BottomNavigationScreens.TV.route -> TvShowScreen(tvShowViewModel)
+            BottomNavigationScreens.Movies.route -> HomeScreen(homeViewModel)
+            BottomNavigationScreens.Sports.route -> HomeScreen(homeViewModel)
             else -> Text("UNKNOWN PAGE")
         }
     }

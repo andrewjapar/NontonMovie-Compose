@@ -12,10 +12,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
 import dev.andrewjap.nontonmovie.R
 import dev.andrewjap.nontonmovie.presentation.component.AppDrawer
-import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeViewModel
 import dev.andrewjap.nontonmovie.presentation.component.BottomNavigationScreens
 import dev.andrewjap.nontonmovie.presentation.component.HomeBottomNavigation
 import dev.andrewjap.nontonmovie.presentation.component.MainScreenNavigationConfigurations
+import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeViewModel
+import dev.andrewjap.nontonmovie.presentation.ui.main.tv.TvShowViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
@@ -26,7 +27,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Composable
 fun MainScreen(
-    homeViewModel: HomeViewModel
+    homeViewModel: HomeViewModel,
+    tvShowViewModel: TvShowViewModel
 ) {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
@@ -63,7 +65,8 @@ fun MainScreen(
 
             MainScreenNavigationConfigurations(
                 navController = navController,
-                viewModel = homeViewModel
+                homeViewModel = homeViewModel,
+                tvShowViewModel = tvShowViewModel
             )
         }
     }

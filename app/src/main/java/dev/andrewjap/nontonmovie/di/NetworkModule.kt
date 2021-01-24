@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import dev.andrewjap.nontonmovie.BuildConfig
-import dev.andrewjap.nontonmovie.data.api.MovieService
+import dev.andrewjap.nontonmovie.data.api.ApiService
 import dev.andrewjap.nontonmovie.data.interceptor.HeaderInterceptor
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
@@ -50,8 +50,8 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideMovieService(retrofit: Retrofit): MovieService {
-        return retrofit.create(MovieService::class.java)
+    fun provideMovieService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 
     private const val CONNECT_TIME_OUT = 60L

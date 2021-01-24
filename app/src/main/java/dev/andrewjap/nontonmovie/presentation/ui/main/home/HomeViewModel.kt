@@ -4,7 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.andrewjap.nontonmovie.data.repository.MovieRepository
-import dev.andrewjap.nontonmovie.domain.entity.Movie
+import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.andrewjap.nontonmovie.extension.safeCollect
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -37,6 +37,6 @@ class HomeViewModel @ViewModelInject constructor(
 }
 
 data class HomeViewState(
-    val popularMovies: List<Movie> = emptyList(),
+    val popularMovies: List<Film> = emptyList(),
     val isLoading: Boolean = false
 )

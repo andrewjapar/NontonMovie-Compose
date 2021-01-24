@@ -17,7 +17,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.andrewjap.nontonmovie.domain.entity.Movie
+import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 /**
@@ -27,8 +27,8 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun RoundedMovieItem(
-    movie: Movie,
-    onItemClicked: (Movie) -> Unit,
+    movie: Film,
+    onItemClicked: (Film) -> Unit,
     modifier: Modifier = Modifier
 ) {
     ConstraintLayout(
@@ -78,7 +78,7 @@ fun RoundedMovieItem(
 @Composable
 fun PreviewRoundedMovieItem() {
     val movie = remember {
-        Movie(
+        Film.Movie(
             1,
             "Herooooo",
             "asd",
