@@ -43,6 +43,7 @@ fun LandscapeMovieItem(
         ) {
             CoilImage(
                 data = movie.landscapeImage,
+                contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )

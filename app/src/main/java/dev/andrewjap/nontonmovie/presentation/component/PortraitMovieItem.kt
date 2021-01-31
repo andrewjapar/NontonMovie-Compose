@@ -39,6 +39,7 @@ fun PortraitMovieItem(
         ) {
             CoilImage(
                 data = movie.portraitImage,
+                contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxSize()

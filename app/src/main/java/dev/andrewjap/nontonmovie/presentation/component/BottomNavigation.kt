@@ -37,7 +37,7 @@ fun HomeBottomNavigation(
         val currentRoute = currentRoute(navController = navController)
         items.forEach {
             BottomNavigationItem(
-                icon = { Icon(imageVector = vectorResource(id = it.iconId)) },
+                icon = { Icon(imageVector = vectorResource(id = it.iconId), contentDescription = null) },
                 label = {
                     Text(
                         text = stringResource(it.resourceId),

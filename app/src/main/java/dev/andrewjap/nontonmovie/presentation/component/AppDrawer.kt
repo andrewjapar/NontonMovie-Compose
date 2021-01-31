@@ -106,6 +106,7 @@ fun DrawerItem(
         ) {
             Image(
                 imageVector = icon,
+                contentDescription = title,
                 colorFilter = ColorFilter.tint(Color.White),
                 alpha = imageAlpha,
                 modifier = Modifier
@@ -134,6 +135,7 @@ fun DrawerItem(
                 Spacer(Modifier.weight(1f))
                 Image(
                     imageVector = Icons.Default.KeyboardArrowRight,
+                    contentDescription = null,
                     colorFilter = ColorFilter.tint(Color.White)
                 )
             }

@@ -58,7 +58,7 @@ fun MainScreen(
                 backgroundColor = Color.Transparent,
                 navigationIcon = {
                     IconButton(onClick = { scaffoldState.drawerState.open() }) {
-                        Icon(imageVector = Icons.Outlined.Menu)
+                        Icon(imageVector = Icons.Outlined.Menu, contentDescription = null)
                     }
                 }
             )

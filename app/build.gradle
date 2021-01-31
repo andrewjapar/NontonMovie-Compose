@@ -70,7 +70,7 @@ dependencies {
     implementation "androidx.compose.material:material:$composeVersion"
     implementation "androidx.compose.ui:ui-tooling:$composeVersion"
     implementation "androidx.compose.runtime:runtime-livedata:$composeVersion"
-    implementation "androidx.navigation:navigation-compose:1.0.0-alpha04"
+    implementation "androidx.navigation:navigation-compose:$navigationComposeVersion"
 
     // Network Request
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
