@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.ui.main.tv
+package dev.andrewjap.nontonmovie.presentation.ui.main.tvshowlist
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
@@ -15,12 +15,12 @@ import kotlinx.coroutines.launch
  *
  */
 
-class TvShowViewModel @ViewModelInject constructor(
+class TvShowListViewModel @ViewModelInject constructor(
     private val tvShowRepository: TvShowRepository
 ) : ViewModel() {
 
-    private val _showTvShows = MutableStateFlow(TvShowState(isLoading = true))
-    val showTvShows: StateFlow<TvShowState>
+    private val _showTvShows = MutableStateFlow(TvShowListState(isLoading = true))
+    val showTvShows: StateFlow<TvShowListState>
         get() = _showTvShows
 
     init {
@@ -35,7 +35,7 @@ class TvShowViewModel @ViewModelInject constructor(
                 tvShowRepository.getLiveToday(),
                 tvShowRepository.getLatest()
             ) { popular, topRated, liveToday, latest ->
-                TvShowState(
+                TvShowListState(
                     popularTvShow = popular,
                     topRatedTvShow = topRated,
                     liveTodayTvShow = liveToday,

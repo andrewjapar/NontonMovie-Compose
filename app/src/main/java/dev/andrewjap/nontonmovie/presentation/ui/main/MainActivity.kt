@@ -6,7 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
 import dagger.hilt.android.AndroidEntryPoint
 import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeViewModel
-import dev.andrewjap.nontonmovie.presentation.ui.main.tv.TvShowViewModel
+import dev.andrewjap.nontonmovie.presentation.ui.main.movielist.MovieListViewModel
+import dev.andrewjap.nontonmovie.presentation.ui.main.tvshowlist.TvShowListViewModel
 import dev.andrewjap.nontonmovie.presentation.ui.theme.NontonMovieTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -15,7 +16,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity() {
 
     private val homeViewModel: HomeViewModel by viewModels()
-    private val tvShowsViewModel: TvShowViewModel by viewModels()
+    private val tvShowsViewModel: TvShowListViewModel by viewModels()
+    private val moviesListModel: MovieListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +25,8 @@ class MainActivity : AppCompatActivity() {
             NontonMovieTheme {
                 MainScreen(
                     homeViewModel = homeViewModel,
-                    tvShowViewModel = tvShowsViewModel
+                    tvShowViewModel = tvShowsViewModel,
+                    movieListViewModel = moviesListModel
                 )
             }
         }

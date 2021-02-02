@@ -18,8 +18,10 @@ import androidx.navigation.compose.*
 import dev.andrewjap.nontonmovie.R
 import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeScreen
 import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeViewModel
-import dev.andrewjap.nontonmovie.presentation.ui.main.tv.TvShowScreen
-import dev.andrewjap.nontonmovie.presentation.ui.main.tv.TvShowViewModel
+import dev.andrewjap.nontonmovie.presentation.ui.main.movielist.MovieListScreen
+import dev.andrewjap.nontonmovie.presentation.ui.main.movielist.MovieListViewModel
+import dev.andrewjap.nontonmovie.presentation.ui.main.tvshowlist.TvShowListViewModel
+import dev.andrewjap.nontonmovie.presentation.ui.main.tvshowlist.TvShowScreen
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
@@ -37,7 +39,12 @@ fun HomeBottomNavigation(
         val currentRoute = currentRoute(navController = navController)
         items.forEach {
             BottomNavigationItem(
-                icon = { Icon(imageVector = vectorResource(id = it.iconId), contentDescription = null) },
+                icon = {
+                    Icon(
+                        imageVector = vectorResource(id = it.iconId),
+                        contentDescription = null
+                    )
+                },
                 label = {
                     Text(
                         text = stringResource(it.resourceId),
@@ -61,7 +68,8 @@ fun HomeBottomNavigation(
 fun MainScreenNavigationConfigurations(
     navController: NavHostController,
     homeViewModel: HomeViewModel,
-    tvShowViewModel: TvShowViewModel
+    tvShowViewModel: TvShowListViewModel,
+    movieListViewModel: MovieListViewModel
 ) {
     NavHost(navController, startDestination = BottomNavigationScreens.Home.route) {
         BottomNavigationScreens::class.sealedSubclasses
@@ -71,7 +79,8 @@ fun MainScreenNavigationConfigurations(
                     Contents(
                         navBackStackEntry = it,
                         homeViewModel = homeViewModel,
-                        tvShowViewModel = tvShowViewModel
+                        tvShowViewModel = tvShowViewModel,
+                        movieListViewModel = movieListViewModel
                     )
                 }
             }
@@ -83,13 +92,14 @@ fun MainScreenNavigationConfigurations(
 fun Contents(
     navBackStackEntry: NavBackStackEntry,
     homeViewModel: HomeViewModel,
-    tvShowViewModel: TvShowViewModel
+    tvShowViewModel: TvShowListViewModel,
+    movieListViewModel: MovieListViewModel
 ) {
     Crossfade(current = navBackStackEntry) {
         when (it.arguments?.getString(KEY_ROUTE)) {
             BottomNavigationScreens.Home.route -> HomeScreen(homeViewModel)
             BottomNavigationScreens.TV.route -> TvShowScreen(tvShowViewModel)
-            BottomNavigationScreens.Movies.route -> HomeScreen(homeViewModel)
+            BottomNavigationScreens.Movies.route -> MovieListScreen(movieListViewModel)
             BottomNavigationScreens.Sports.route -> HomeScreen(homeViewModel)
             else -> Text("UNKNOWN PAGE")
         }

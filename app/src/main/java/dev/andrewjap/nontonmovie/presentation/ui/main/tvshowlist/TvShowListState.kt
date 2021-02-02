@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.ui.main.tv
+package dev.andrewjap.nontonmovie.presentation.ui.main.tvshowlist
 
 import dev.andrewjap.nontonmovie.domain.entity.Film
 
@@ -7,7 +7,7 @@ import dev.andrewjap.nontonmovie.domain.entity.Film
  *
  */
 
-data class TvShowState(
+data class TvShowListState(
     val popularTvShow: List<Film.TvShow> = emptyList(),
     val latestTvShow: List<Film.TvShow> = emptyList(),
     val liveTodayTvShow: List<Film.TvShow> = emptyList(),

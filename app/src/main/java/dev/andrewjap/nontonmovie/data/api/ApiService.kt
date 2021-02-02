@@ -18,7 +18,13 @@ interface ApiService {
     suspend fun getNowPlayingMovies(): MovieListResponse
 
     @GET("movie/popular?language=en-US")
-    suspend fun getPopularMovies(@Query("page") page: Int): MovieListResponse
+    suspend fun getPopularMovies(): MovieListResponse
+
+    @GET("movie/top_rated?language=en-US")
+    suspend fun getLatestMovies(): MovieListResponse
+
+    @GET("movie/upcoming?language=en-US")
+    suspend fun getUpcomingMovies(): MovieListResponse
 
     @GET("movie/{id}")
     suspend fun getMovieDetails(@Path("id") movieId: Int): MovieDetailResponse

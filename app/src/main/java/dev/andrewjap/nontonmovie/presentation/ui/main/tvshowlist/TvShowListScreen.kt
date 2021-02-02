@@ -1,4 +1,4 @@
-package dev.andrewjap.nontonmovie.presentation.ui.main.tv
+package dev.andrewjap.nontonmovie.presentation.ui.main.tvshowlist
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
@@ -20,7 +20,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Composable
 fun TvShowScreen(
-    viewModel: TvShowViewModel = viewModel()
+    viewModel: TvShowListViewModel = viewModel()
 ) {
 
     val viewState by viewModel.showTvShows.collectAsState()

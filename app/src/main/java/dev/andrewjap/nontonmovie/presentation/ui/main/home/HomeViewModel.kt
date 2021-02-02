@@ -29,7 +29,7 @@ class HomeViewModel @ViewModelInject constructor(
 
     private fun loadMovies() {
         viewModelScope.launch {
-            movieRepository.get().safeCollect {
+            movieRepository.getNowPlaying().safeCollect {
                 _showMovies.value = HomeViewState(popularMovies = it)
             }
         }
