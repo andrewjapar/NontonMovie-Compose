@@ -16,7 +16,7 @@ data class TvShowDetailResponse(
     val backdropPath: String? = null,
 
     @SerializedName("genres")
-    val genres: List<Genre>? = null,
+    val genres: List<GenreResponse>? = null,
 
     @SerializedName("original_language")
     val originalLanguage: String? = null,
@@ -44,15 +44,4 @@ data class TvShowDetailResponse(
 
     @SerializedName("vote_count")
     val voteCount: Int? = null
-) {
-
-    data class Genre(
-
-        @SerializedName("id")
-        val id: Int,
-
-        @SerializedName("name")
-        val name: String? = null
-    )
-
-}
+)

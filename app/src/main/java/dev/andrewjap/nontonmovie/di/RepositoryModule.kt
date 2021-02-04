@@ -5,10 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import dev.andrewjap.nontonmovie.data.api.ApiService
-import dev.andrewjap.nontonmovie.data.repository.MovieRepository
-import dev.andrewjap.nontonmovie.data.repository.MovieRepositoryImpl
-import dev.andrewjap.nontonmovie.data.repository.TvShowRepository
-import dev.andrewjap.nontonmovie.data.repository.TvShowRepositoryImpl
+import dev.andrewjap.nontonmovie.data.repository.*
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -27,5 +24,10 @@ object RepositoryModule {
     @Provides
     fun provideTvShowRepository(apiService: ApiService): TvShowRepository {
         return TvShowRepositoryImpl(apiService)
+    }
+
+    @Provides
+    fun provideGenreRepository(apiService: ApiService): GenreRepository {
+        return GenreRepositoryImpl(apiService)
     }
 }

@@ -16,6 +16,8 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import dev.andrewjap.nontonmovie.R
+import dev.andrewjap.nontonmovie.presentation.ui.main.genrelist.GenreListScreen
+import dev.andrewjap.nontonmovie.presentation.ui.main.genrelist.GenreListViewModel
 import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeScreen
 import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeViewModel
 import dev.andrewjap.nontonmovie.presentation.ui.main.movielist.MovieListScreen
@@ -69,7 +71,8 @@ fun MainScreenNavigationConfigurations(
     navController: NavHostController,
     homeViewModel: HomeViewModel,
     tvShowViewModel: TvShowListViewModel,
-    movieListViewModel: MovieListViewModel
+    movieListViewModel: MovieListViewModel,
+    genreListViewModel: GenreListViewModel
 ) {
     NavHost(navController, startDestination = BottomNavigationScreens.Home.route) {
         BottomNavigationScreens::class.sealedSubclasses
@@ -80,7 +83,8 @@ fun MainScreenNavigationConfigurations(
                         navBackStackEntry = it,
                         homeViewModel = homeViewModel,
                         tvShowViewModel = tvShowViewModel,
-                        movieListViewModel = movieListViewModel
+                        movieListViewModel = movieListViewModel,
+                        genreListViewModel = genreListViewModel
                     )
                 }
             }
@@ -93,14 +97,15 @@ fun Contents(
     navBackStackEntry: NavBackStackEntry,
     homeViewModel: HomeViewModel,
     tvShowViewModel: TvShowListViewModel,
-    movieListViewModel: MovieListViewModel
+    movieListViewModel: MovieListViewModel,
+    genreListViewModel: GenreListViewModel
 ) {
     Crossfade(current = navBackStackEntry) {
         when (it.arguments?.getString(KEY_ROUTE)) {
             BottomNavigationScreens.Home.route -> HomeScreen(homeViewModel)
             BottomNavigationScreens.TV.route -> TvShowScreen(tvShowViewModel)
             BottomNavigationScreens.Movies.route -> MovieListScreen(movieListViewModel)
-            BottomNavigationScreens.Sports.route -> HomeScreen(homeViewModel)
+            BottomNavigationScreens.Sports.route -> GenreListScreen(genreListViewModel)
             else -> Text("UNKNOWN PAGE")
         }
     }

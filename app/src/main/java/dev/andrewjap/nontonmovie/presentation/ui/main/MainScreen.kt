@@ -15,6 +15,7 @@ import dev.andrewjap.nontonmovie.presentation.component.AppDrawer
 import dev.andrewjap.nontonmovie.presentation.component.BottomNavigationScreens
 import dev.andrewjap.nontonmovie.presentation.component.HomeBottomNavigation
 import dev.andrewjap.nontonmovie.presentation.component.MainScreenNavigationConfigurations
+import dev.andrewjap.nontonmovie.presentation.ui.main.genrelist.GenreListViewModel
 import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeViewModel
 import dev.andrewjap.nontonmovie.presentation.ui.main.movielist.MovieListViewModel
 import dev.andrewjap.nontonmovie.presentation.ui.main.tvshowlist.TvShowListViewModel
@@ -30,7 +31,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 fun MainScreen(
     homeViewModel: HomeViewModel,
     tvShowViewModel: TvShowListViewModel,
-    movieListViewModel: MovieListViewModel
+    movieListViewModel: MovieListViewModel,
+    genreListViewModel: GenreListViewModel
 ) {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
@@ -69,7 +71,8 @@ fun MainScreen(
                 navController = navController,
                 homeViewModel = homeViewModel,
                 tvShowViewModel = tvShowViewModel,
-                movieListViewModel = movieListViewModel
+                movieListViewModel = movieListViewModel,
+                genreListViewModel = genreListViewModel
             )
         }
     }

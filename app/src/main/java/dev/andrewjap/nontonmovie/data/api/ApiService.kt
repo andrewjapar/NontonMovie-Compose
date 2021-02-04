@@ -1,11 +1,11 @@
 package dev.andrewjap.nontonmovie.data.api
 
+import dev.andrewjap.nontonmovie.data.response.GenreListResponse
 import dev.andrewjap.nontonmovie.data.response.MovieDetailResponse
 import dev.andrewjap.nontonmovie.data.response.MovieListResponse
 import dev.andrewjap.nontonmovie.data.response.TvShowListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -40,4 +40,7 @@ interface ApiService {
 
     @GET("tv/on_the_air?language=en-US")
     suspend fun getLatestTvShows(): TvShowListResponse
+
+    @GET("genre/movie/list?language=en-US")
+    suspend fun getMovieGenre(): GenreListResponse
 }
