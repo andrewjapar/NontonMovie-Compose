@@ -18,7 +18,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.andrewjap.nontonmovie.domain.entity.Film
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -50,9 +49,8 @@ fun RoundedMovieItem(
                 .background(Color.Gray)
                 .clickable { onItemClicked.invoke(movie) }
         ) {
-            CoilImage(
+            NontonMovieImage(
                 data = movie.portraitImage,
-                contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxSize()
