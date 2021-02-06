@@ -3,6 +3,7 @@ package dev.andrewjap.nontonmovie.presentation.component
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -16,6 +17,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import dev.andrewjap.nontonmovie.R
+import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.andrewjap.nontonmovie.presentation.ui.main.genrelist.GenreListScreen
 import dev.andrewjap.nontonmovie.presentation.ui.main.genrelist.GenreListViewModel
 import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeScreen
@@ -64,6 +66,7 @@ fun HomeBottomNavigation(
     }
 }
 
+@ExperimentalFoundationApi
 @Suppress("NO_REFLECTION_IN_CLASS_PATH")
 @ExperimentalCoroutinesApi
 @Composable
@@ -72,7 +75,8 @@ fun MainScreenNavigationConfigurations(
     homeViewModel: HomeViewModel,
     tvShowViewModel: TvShowListViewModel,
     movieListViewModel: MovieListViewModel,
-    genreListViewModel: GenreListViewModel
+    genreListViewModel: GenreListViewModel,
+    onFilmClicked: (Film) -> Unit = {}
 ) {
     NavHost(navController, startDestination = BottomNavigationScreens.Home.route) {
         BottomNavigationScreens::class.sealedSubclasses
@@ -84,13 +88,15 @@ fun MainScreenNavigationConfigurations(
                         homeViewModel = homeViewModel,
                         tvShowViewModel = tvShowViewModel,
                         movieListViewModel = movieListViewModel,
-                        genreListViewModel = genreListViewModel
+                        genreListViewModel = genreListViewModel,
+                        onFilmClicked = onFilmClicked
                     )
                 }
             }
     }
 }
 
+@ExperimentalFoundationApi
 @ExperimentalCoroutinesApi
 @Composable
 fun Contents(
@@ -98,13 +104,17 @@ fun Contents(
     homeViewModel: HomeViewModel,
     tvShowViewModel: TvShowListViewModel,
     movieListViewModel: MovieListViewModel,
-    genreListViewModel: GenreListViewModel
+    genreListViewModel: GenreListViewModel,
+    onFilmClicked: (Film) -> Unit = {}
 ) {
     Crossfade(current = navBackStackEntry) {
         when (it.arguments?.getString(KEY_ROUTE)) {
             BottomNavigationScreens.Home.route -> HomeScreen(homeViewModel)
-            BottomNavigationScreens.TV.route -> TvShowScreen(tvShowViewModel)
-            BottomNavigationScreens.Movies.route -> MovieListScreen(movieListViewModel)
+            BottomNavigationScreens.TV.route -> TvShowScreen(tvShowViewModel, onFilmClicked)
+            BottomNavigationScreens.Movies.route -> MovieListScreen(
+                movieListViewModel,
+                onFilmClicked
+            )
             BottomNavigationScreens.Sports.route -> GenreListScreen(genreListViewModel)
             else -> Text("UNKNOWN PAGE")
         }

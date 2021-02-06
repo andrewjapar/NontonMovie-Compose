@@ -37,7 +37,8 @@ fun GridGenreList(
 ) {
     LazyVerticalGrid(
         cells = GridCells.Fixed(2),
-        modifier = modifier.padding(10.dp)
+        modifier = modifier
+            .padding(start = 10.dp, end = 10.dp)
     ) {
         items(items) { item ->
             GenreItem(
@@ -64,7 +65,6 @@ private fun GenreItem(
                 .background(Brush.horizontalGradient(listOf(Color(23, 39, 89), Color(40, 72, 157))))
                 .clickable { onItemClicked.invoke(genre) }
         ) {
-
             Box(
                 modifier = Modifier
                     .fillMaxWidth()

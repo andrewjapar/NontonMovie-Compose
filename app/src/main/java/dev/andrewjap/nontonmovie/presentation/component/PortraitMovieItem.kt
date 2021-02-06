@@ -29,7 +29,6 @@ fun PortraitMovieItem(
     Column(modifier) {
         Box(
             modifier = Modifier
-                .weight(1f)
                 .aspectRatio(0.70f)
                 .align(Alignment.CenterHorizontally)
                 .clip(MaterialTheme.shapes.small)
@@ -38,9 +37,7 @@ fun PortraitMovieItem(
         ) {
             NontonMovieImage(
                 data = movie.portraitImage,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .fillMaxSize()
+                contentScale = ContentScale.Crop
             )
         }
     }

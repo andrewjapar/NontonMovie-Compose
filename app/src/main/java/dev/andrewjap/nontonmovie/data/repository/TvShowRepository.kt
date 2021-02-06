@@ -2,7 +2,9 @@ package dev.andrewjap.nontonmovie.data.repository
 
 import dev.andrewjap.nontonmovie.BuildConfig
 import dev.andrewjap.nontonmovie.data.api.ApiService
+import dev.andrewjap.nontonmovie.data.response.TvShowDetailResponse
 import dev.andrewjap.nontonmovie.data.response.TvShowListResponse
+import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.andrewjap.nontonmovie.domain.entity.Film.TvShow
 import dev.andrewjap.nontonmovie.extension.safeApiCall
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +20,10 @@ interface TvShowRepository {
     suspend fun getLatest(): Flow<List<TvShow>>
     suspend fun getTopRated(): Flow<List<TvShow>>
     suspend fun getLiveToday(): Flow<List<TvShow>>
+
+    suspend fun getDetails(id: Int): Flow<TvShow>
+    suspend fun getSimilar(id: Int): Flow<List<TvShow>>
+    suspend fun getRecommendation(id: Int): Flow<List<TvShow>>
 }
 
 class TvShowRepositoryImpl(
@@ -40,16 +46,29 @@ class TvShowRepositoryImpl(
         return safeApiCall(Dispatchers.IO) { apiService.getTopRatedTvShows().toTvShowList() }
     }
 
-    private fun TvShowListResponse.toTvShowList(): List<TvShow> {
-        return results?.map {
-            TvShow(
-                id = it.id,
-                title = it.name ?: "",
-                description = it.overview ?: "",
-                portraitImage = BuildConfig.MOVIE_IMAGE_PATH + it.posterPath,
-                landscapeImage = BuildConfig.MOVIE_IMAGE_PATH + it.backdropPath
+    override suspend fun getDetails(id: Int): Flow<TvShow> {
+        return safeApiCall(Dispatchers.IO) { apiService.getTvShowDetails(id).toTvShow() }
+    }
 
-            )
-        } ?: emptyList()
+    override suspend fun getSimilar(id: Int): Flow<List<TvShow>> {
+        return safeApiCall(Dispatchers.IO) { apiService.getSimilarTvShow(id).toTvShowList() }
+    }
+
+    override suspend fun getRecommendation(id: Int): Flow<List<TvShow>> {
+        return safeApiCall(Dispatchers.IO) { apiService.getRecommendationTvShow(id).toTvShowList() }
+    }
+
+    private fun TvShowListResponse.toTvShowList(): List<TvShow> {
+        return results?.map { it.toTvShow() } ?: emptyList()
+    }
+
+    private fun TvShowDetailResponse.toTvShow(): Film.TvShow {
+        return TvShow(
+            id = id,
+            title = name ?: "",
+            description = overview ?: "",
+            portraitImage = BuildConfig.MOVIE_IMAGE_PATH + posterPath,
+            landscapeImage = BuildConfig.MOVIE_IMAGE_PATH + backdropPath
+        )
     }
 }

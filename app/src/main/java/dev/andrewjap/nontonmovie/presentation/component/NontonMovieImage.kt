@@ -1,6 +1,7 @@
 package dev.andrewjap.nontonmovie.presentation.component
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -25,7 +26,7 @@ fun NontonMovieImage(
         data = data,
         contentDescription = contentDescription,
         contentScale = contentScale,
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier,
         colorFilter = colorFilter,
         fadeIn = fadeIn
     )

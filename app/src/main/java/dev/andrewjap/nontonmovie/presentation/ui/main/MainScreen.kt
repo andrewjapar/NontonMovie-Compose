@@ -1,5 +1,6 @@
 package dev.andrewjap.nontonmovie.presentation.ui.main
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
@@ -11,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
 import dev.andrewjap.nontonmovie.R
+import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.andrewjap.nontonmovie.presentation.component.AppDrawer
 import dev.andrewjap.nontonmovie.presentation.component.BottomNavigationScreens
 import dev.andrewjap.nontonmovie.presentation.component.HomeBottomNavigation
@@ -26,13 +28,15 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  *
  */
 
+@ExperimentalFoundationApi
 @ExperimentalCoroutinesApi
 @Composable
 fun MainScreen(
     homeViewModel: HomeViewModel,
     tvShowViewModel: TvShowListViewModel,
     movieListViewModel: MovieListViewModel,
-    genreListViewModel: GenreListViewModel
+    genreListViewModel: GenreListViewModel,
+    onFilmClicked: (Film) -> Unit = {}
 ) {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
@@ -72,7 +76,8 @@ fun MainScreen(
                 homeViewModel = homeViewModel,
                 tvShowViewModel = tvShowViewModel,
                 movieListViewModel = movieListViewModel,
-                genreListViewModel = genreListViewModel
+                genreListViewModel = genreListViewModel,
+                onFilmClicked = onFilmClicked
             )
         }
     }

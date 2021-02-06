@@ -33,7 +33,6 @@ fun LandscapeMovieItem(
     Column(modifier) {
         Box(
             modifier = Modifier
-                .weight(1f)
                 .aspectRatio(1.77f)
                 .align(Alignment.CenterHorizontally)
                 .clip(MaterialTheme.shapes.small)

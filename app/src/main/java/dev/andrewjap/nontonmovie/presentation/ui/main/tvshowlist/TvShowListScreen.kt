@@ -12,6 +12,7 @@ import androidx.compose.ui.layout.WithConstraints
 import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
+import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.andrewjap.nontonmovie.presentation.component.HeadlineMovieSlider
 import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieList
 import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieListType
@@ -20,7 +21,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Composable
 fun TvShowScreen(
-    viewModel: TvShowListViewModel = viewModel()
+    viewModel: TvShowListViewModel = viewModel(),
+    onFilmClicked: (Film) -> Unit = {},
 ) {
 
     val viewState by viewModel.showTvShows.collectAsState()
@@ -45,6 +47,7 @@ fun TvShowScreen(
 
             HeadlineMovieSlider(
                 items = viewState.liveTodayTvShow,
+                onItemClicked = onFilmClicked,
                 modifier = Modifier
                     .padding(start = 16.dp, end = 16.dp)
                     .fillMaxWidth()
@@ -54,6 +57,7 @@ fun TvShowScreen(
             HorizontalMovieList(
                 items = viewState.popularTvShow,
                 title = "Popular TV Shows",
+                onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
                 type = HorizontalMovieListType.LANDSCAPE,
                 modifier = Modifier
@@ -68,6 +72,7 @@ fun TvShowScreen(
             HorizontalMovieList(
                 items = viewState.topRatedTvShow,
                 title = "Top Rated TV Shows",
+                onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -81,6 +86,7 @@ fun TvShowScreen(
             HorizontalMovieList(
                 items = viewState.latestTvShow,
                 title = "Latest TV Shows",
+                onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
                 modifier = Modifier
                     .fillMaxWidth()

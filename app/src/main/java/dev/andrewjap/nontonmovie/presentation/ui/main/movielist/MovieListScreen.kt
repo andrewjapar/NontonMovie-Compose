@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
+import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.andrewjap.nontonmovie.presentation.component.HeadlineMovieSlider
 import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieList
 import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieListType
@@ -24,7 +25,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Composable
 fun MovieListScreen(
-    viewModel: MovieListViewModel = viewModel()
+    viewModel: MovieListViewModel = viewModel(),
+    onFilmClicked: (Film) -> Unit = {}
 ) {
 
     val viewState by viewModel.showMovies.collectAsState()
@@ -49,6 +51,7 @@ fun MovieListScreen(
 
             HeadlineMovieSlider(
                 items = viewState.nowPlaying,
+                onItemClicked = onFilmClicked,
                 modifier = Modifier
                     .padding(start = 16.dp, end = 16.dp)
                     .fillMaxWidth()
@@ -58,6 +61,7 @@ fun MovieListScreen(
             HorizontalMovieList(
                 items = viewState.upcoming,
                 title = "Upcoming Movies",
+                onItemClicked = onFilmClicked,
                 type = HorizontalMovieListType.ROUNDED,
                 paddingContent = 8.dp
             )
@@ -65,6 +69,7 @@ fun MovieListScreen(
             HorizontalMovieList(
                 items = viewState.latest,
                 title = "Top Rated Movies",
+                onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
                 type = HorizontalMovieListType.LANDSCAPE,
                 modifier = Modifier
@@ -79,6 +84,7 @@ fun MovieListScreen(
             HorizontalMovieList(
                 items = viewState.popular,
                 title = "Popular Movies",
+                onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
                 modifier = Modifier
                     .fillMaxWidth()
