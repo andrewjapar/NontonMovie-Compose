@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -16,14 +15,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import dev.andrewjap.nontonmovie.domain.entity.Genre
-import dev.chrisbanes.accompanist.coil.CoilImage
+import dev.andrewjap.nontonmovie.presentation.ui.theme.NontonMovieShapes
 
 /**
  * Designed and developed by Andrew Japar (@andrewjapar)
@@ -35,15 +33,17 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 fun GridGenreList(
     items: List<Genre>,
     modifier: Modifier = Modifier,
-    onItemClicked: (Genre) -> Unit = {},
-    paddingContent: Dp = 0.dp
+    onItemClicked: (Genre) -> Unit = {}
 ) {
-    LazyVerticalGrid(cells = GridCells.Fixed(2)) {
+    LazyVerticalGrid(
+        cells = GridCells.Fixed(2),
+        modifier = modifier.padding(10.dp)
+    ) {
         items(items) { item ->
             GenreItem(
                 genre = item,
                 onItemClicked = onItemClicked,
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(6.dp)
             )
         }
     }
@@ -60,16 +60,10 @@ private fun GenreItem(
             modifier = Modifier
                 .aspectRatio(1.77f)
                 .align(Alignment.CenterHorizontally)
-                .clip(MaterialTheme.shapes.small)
-                .background(Color.Gray)
+                .clip(NontonMovieShapes.small)
+                .background(Brush.horizontalGradient(listOf(Color(23, 39, 89), Color(40, 72, 157))))
                 .clickable { onItemClicked.invoke(genre) }
         ) {
-            CoilImage(
-                data = genre.image,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
 
             Box(
                 modifier = Modifier
@@ -88,11 +82,12 @@ private fun GenreItem(
                 text = genre.name,
                 color = Color.White,
                 maxLines = 1,
+                fontSize = 16.sp,
                 fontWeight = FontWeight.Medium,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
-                    .align(Alignment.BottomStart)
-                    .padding(12.dp)
+                    .align(Alignment.CenterStart)
+                    .padding(start = 16.dp)
             )
         }
     }
@@ -112,7 +107,6 @@ fun PreviewGridMovieList() {
     }
 
     GridGenreList(
-        items = genres + genres + genres,
-        paddingContent = 8.dp
+        items = genres + genres + genres
     )
 }
