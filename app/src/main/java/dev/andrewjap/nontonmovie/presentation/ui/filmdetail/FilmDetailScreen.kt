@@ -12,10 +12,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AmbientDensity
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import dev.andrewjap.nontonmovie.domain.entity.Film
+import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieList
 import dev.andrewjap.nontonmovie.presentation.component.NontonMovieImage
 import dev.andrewjap.nontonmovie.presentation.component.PortraitMovieItem
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -61,8 +63,35 @@ fun FilmDetailScreen(
             )
 
             FilmDescription(film = details)
+
+            HorizontalMovieList(
+                items = viewState.similar,
+                title = "Similar Movies",
+                paddingContent = 8.dp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .preferredHeight(
+                        boxWidth
+                            .div(3)
+                            .div(0.67f)
+                    )
+            )
+
+            HorizontalMovieList(
+                items = viewState.recommendation,
+                title = "Recommendation",
+                paddingContent = 8.dp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .preferredHeight(
+                        boxWidth
+                            .div(3)
+                            .div(0.67f)
+                    )
+            )
         }
     }
+
 }
 
 @Composable
@@ -70,7 +99,11 @@ private fun FilmDescription(
     film: Film,
     modifier: Modifier = Modifier
 ) {
-    ConstraintLayout(modifier = modifier.wrapContentHeight()) {
+    ConstraintLayout(
+        modifier = modifier
+            .wrapContentHeight()
+            .fillMaxWidth()
+    ) {
         val (posterImage, title, description) = createRefs()
 
         PortraitMovieItem(
@@ -78,7 +111,7 @@ private fun FilmDescription(
             onItemClicked = { },
             modifier = Modifier
                 .constrainAs(posterImage) {
-                    width = Dimension.percent(0.4f)
+                    width = Dimension.value(80.dp)
                     height = Dimension.wrapContent
                     start.linkTo(parent.start)
                     top.linkTo(parent.top)
@@ -87,7 +120,10 @@ private fun FilmDescription(
 
         Text(
             text = film.title,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 1,
             modifier = Modifier.constrainAs(title) {
+                width = Dimension.fillToConstraints
                 start.linkTo(posterImage.end, margin = 8.dp)
                 top.linkTo(posterImage.top)
                 end.linkTo(parent.end)
