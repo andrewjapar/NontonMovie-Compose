@@ -3,8 +3,7 @@ package dev.andrewjap.nontonmovie.presentation.ui.filmdetail
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -36,54 +35,59 @@ fun FilmDetailScreen(
     val viewState by viewModel.showDetails.collectAsState()
     val details = viewState.details
 
-    if (viewState.isLoading || details == null) {
-        Box(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
-            )
+    val scaffoldState = rememberScaffoldState()
+
+    Scaffold(scaffoldState = scaffoldState) {
+
+        if (viewState.isLoading || details == null) {
+            Box(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
+            return@Scaffold
         }
-        return
-    }
 
-    BoxWithConstraints {
-        val boxWidth = with(AmbientDensity.current) { constraints.maxWidth.toDp() }
+        BoxWithConstraints {
+            val boxWidth = with(AmbientDensity.current) { constraints.maxWidth.toDp() }
 
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
-        ) {
-            NontonMovieImage(
-                data = details.landscapeImage,
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .preferredHeight(boxWidth.div(1.77f))
-            )
+                    .verticalScroll(rememberScrollState())
+            ) {
 
-            FilmDescription(film = details)
+                NontonMovieImage(
+                    data = details.landscapeImage,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .preferredHeight(boxWidth.div(1.77f))
+                )
 
-            HorizontalMovieList(
-                items = viewState.similar,
-                title = "Similar Movies",
-                paddingContent = 8.dp,
-                height = boxWidth
-                    .div(3)
-                    .div(0.8f)
-            )
+                FilmDescription(film = details)
 
-            HorizontalMovieList(
-                items = viewState.recommendation,
-                title = "Recommendation",
-                paddingContent = 8.dp,
-                height = boxWidth
-                    .div(3)
-                    .div(0.8f)
-            )
+                HorizontalMovieList(
+                    items = viewState.similar,
+                    title = "Similar Movies",
+                    paddingContent = 8.dp,
+                    height = boxWidth
+                        .div(3)
+                        .div(0.8f)
+                )
+
+                HorizontalMovieList(
+                    items = viewState.recommendation,
+                    title = "Recommendation",
+                    paddingContent = 8.dp,
+                    height = boxWidth
+                        .div(3)
+                        .div(0.8f)
+                )
+            }
         }
     }
-
 }
 
 @Composable
@@ -112,6 +116,7 @@ private fun FilmDescription(
 
         Text(
             text = film.title,
+            style = MaterialTheme.typography.h6,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
             modifier = Modifier.constrainAs(title) {
