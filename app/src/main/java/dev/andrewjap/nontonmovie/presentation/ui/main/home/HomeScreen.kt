@@ -62,13 +62,9 @@ fun HomeScreen(
                 items = viewState.popularMovies,
                 title = "Hello World",
                 paddingContent = 8.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .preferredHeight(
-                        boxWidth
-                            .div(3)
-                            .div(0.67f)
-                    )
+                height = boxWidth
+                    .div(3)
+                    .div(0.8f)
             )
 
             HorizontalMovieList(
@@ -76,26 +72,18 @@ fun HomeScreen(
                 title = "Hello World",
                 paddingContent = 8.dp,
                 type = HorizontalMovieListType.LANDSCAPE,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .preferredHeight(
-                        boxWidth
-                            .div(3)
-                            .div(0.67f)
-                    )
+                height = boxWidth
+                    .div(3)
+                    .div(0.8f)
             )
 
             HorizontalMovieList(
                 items = viewState.popularMovies,
                 title = "Hello World",
                 paddingContent = 8.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .preferredHeight(
-                        boxWidth
-                            .div(3)
-                            .div(0.67f)
-                    )
+                height = boxWidth
+                    .div(3)
+                    .div(0.8f)
             )
         }
     }

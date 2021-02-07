@@ -68,26 +68,18 @@ fun FilmDetailScreen(
                 items = viewState.similar,
                 title = "Similar Movies",
                 paddingContent = 8.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .preferredHeight(
-                        boxWidth
-                            .div(3)
-                            .div(0.67f)
-                    )
+                height = boxWidth
+                    .div(3)
+                    .div(0.8f)
             )
 
             HorizontalMovieList(
                 items = viewState.recommendation,
                 title = "Recommendation",
                 paddingContent = 8.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .preferredHeight(
-                        boxWidth
-                            .div(3)
-                            .div(0.67f)
-                    )
+                height = boxWidth
+                    .div(3)
+                    .div(0.8f)
             )
         }
     }
@@ -113,8 +105,8 @@ private fun FilmDescription(
                 .constrainAs(posterImage) {
                     width = Dimension.value(80.dp)
                     height = Dimension.wrapContent
-                    start.linkTo(parent.start)
-                    top.linkTo(parent.top)
+                    start.linkTo(parent.start, margin = 16.dp)
+                    top.linkTo(parent.top, margin = 16.dp)
                 }
         )
 
@@ -126,7 +118,7 @@ private fun FilmDescription(
                 width = Dimension.fillToConstraints
                 start.linkTo(posterImage.end, margin = 8.dp)
                 top.linkTo(posterImage.top)
-                end.linkTo(parent.end)
+                end.linkTo(parent.end, margin = 16.dp)
             }
         )
 
@@ -135,9 +127,9 @@ private fun FilmDescription(
             modifier = Modifier.constrainAs(description) {
                 width = Dimension.fillToConstraints
                 top.linkTo(posterImage.bottom, margin = 8.dp)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-                bottom.linkTo(parent.bottom)
+                start.linkTo(posterImage.start)
+                end.linkTo(title.end)
+                bottom.linkTo(parent.bottom, margin = 16.dp)
             }
         )
     }

@@ -26,13 +26,22 @@ fun HorizontalMovieList(
     title: String? = null,
     onItemClicked: (Film) -> Unit = {},
     type: HorizontalMovieListType = PORTRAIT,
+    height: Dp = 180.dp,
     paddingContent: Dp = 0.dp
 ) {
+
+    if (items.isEmpty()) return
+
     Column(
         modifier = modifier
             .fillMaxWidth()
             .padding(bottom = 16.dp)
     ) {
+
+        val listModifier = remember {
+            if (type == ROUNDED) Modifier
+            else Modifier.preferredHeight(height)
+        }
 
         if (!title.isNullOrBlank()) Text(
             text = title,
@@ -42,6 +51,7 @@ fun HorizontalMovieList(
         )
 
         LazyRow(
+            modifier = listModifier,
             contentPadding = PaddingValues(start = paddingContent, end = paddingContent)
         ) {
             items(items) { item ->
@@ -114,8 +124,7 @@ fun PreviewPortraitMovieList() {
         items = movies + movies + movies,
         title = "Popular Shows",
         type = PORTRAIT,
-        paddingContent = 8.dp,
-        modifier = Modifier.preferredHeight(180.dp)
+        paddingContent = 8.dp
     )
 }
 
@@ -138,7 +147,6 @@ fun PreviewLandscapeMovieList() {
         items = movies + movies + movies,
         title = "Popular Shows",
         type = LANDSCAPE,
-        paddingContent = 8.dp,
-        modifier = Modifier.preferredHeight(180.dp)
+        paddingContent = 8.dp
     )
 }

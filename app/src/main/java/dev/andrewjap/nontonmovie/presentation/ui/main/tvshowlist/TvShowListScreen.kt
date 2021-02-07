@@ -60,13 +60,9 @@ fun TvShowScreen(
                 onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
                 type = HorizontalMovieListType.LANDSCAPE,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .preferredHeight(
-                        boxWidth
-                            .div(3)
-                            .div(0.67f)
-                    )
+                height = boxWidth
+                    .div(3)
+                    .div(0.8f)
             )
 
             HorizontalMovieList(
@@ -74,13 +70,9 @@ fun TvShowScreen(
                 title = "Top Rated TV Shows",
                 onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .preferredHeight(
-                        boxWidth
-                            .div(3)
-                            .div(0.67f)
-                    )
+                height = boxWidth
+                    .div(3)
+                    .div(0.8f)
             )
 
             HorizontalMovieList(
@@ -88,13 +80,9 @@ fun TvShowScreen(
                 title = "Latest TV Shows",
                 onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .preferredHeight(
-                        boxWidth
-                            .div(3)
-                            .div(0.67f)
-                    )
+                height = boxWidth
+                    .div(3)
+                    .div(0.8f)
             )
         }
     }
