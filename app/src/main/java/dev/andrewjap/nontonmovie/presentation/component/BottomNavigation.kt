@@ -115,7 +115,7 @@ fun Contents(
                 movieListViewModel,
                 onFilmClicked
             )
-            BottomNavigationScreens.Sports.route -> GenreListScreen(genreListViewModel)
+            BottomNavigationScreens.Genres.route -> GenreListScreen(genreListViewModel)
             else -> Text("UNKNOWN PAGE")
         }
     }
@@ -137,6 +137,6 @@ sealed class BottomNavigationScreens(
         BottomNavigationScreens("TV", R.string.lbl_tv, R.drawable.ic_live_tv)
 
     object Movies : BottomNavigationScreens("Movies", R.string.lbl_movies, R.drawable.ic_movie)
-    object Sports :
-        BottomNavigationScreens("Sports", R.string.lbl_sports, R.drawable.ic_sports_soccer)
+    object Genres :
+        BottomNavigationScreens("Genres", R.string.lbl_genres, R.drawable.ic_sports_soccer)
 }

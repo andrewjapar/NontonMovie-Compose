@@ -55,7 +55,7 @@ fun MainScreen(
                     BottomNavigationScreens.Home,
                     BottomNavigationScreens.TV,
                     BottomNavigationScreens.Movies,
-                    BottomNavigationScreens.Sports
+                    BottomNavigationScreens.Genres
                 )
             )
         }

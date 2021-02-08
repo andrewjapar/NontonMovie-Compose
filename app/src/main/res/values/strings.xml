@@ -4,7 +4,7 @@
     <string name="lbl_home">Home</string>
     <string name="lbl_tv">TV</string>
     <string name="lbl_movies">Movies</string>
-    <string name="lbl_sports">Sports</string>
+    <string name="lbl_genres">Genres</string>
 
     <string name="lbl_log_in">Log in</string>
     <string name="lbl_log_in_caption">For a better experience</string>
