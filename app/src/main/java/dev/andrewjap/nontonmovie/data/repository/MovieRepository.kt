@@ -67,7 +67,8 @@ class MovieRepositoryImpl(
             title = title ?: "",
             description = overview ?: "",
             portraitImage = BuildConfig.MOVIE_IMAGE_PATH + posterPath,
-            landscapeImage = BuildConfig.MOVIE_IMAGE_PATH + backdropPath
+            landscapeImage = BuildConfig.MOVIE_IMAGE_PATH + backdropPath,
+            genres = genres?.take(3)?.mapNotNull { it.name } ?: emptyList()
         )
     }
 }

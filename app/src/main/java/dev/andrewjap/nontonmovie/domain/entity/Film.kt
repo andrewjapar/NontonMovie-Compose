@@ -11,13 +11,15 @@ sealed class Film {
     abstract val description: String
     abstract val portraitImage: String
     abstract val landscapeImage: String
+    abstract val genres: List<String>
 
     data class Movie(
         override val id: Int,
         override val title: String,
         override val description: String = "",
         override val portraitImage: String = "",
-        override val landscapeImage: String = ""
+        override val landscapeImage: String = "",
+        override val genres: List<String> = emptyList()
     ) : Film()
 
     data class TvShow(
@@ -25,6 +27,7 @@ sealed class Film {
         override val title: String,
         override val description: String = "",
         override val portraitImage: String = "",
-        override val landscapeImage: String = ""
+        override val landscapeImage: String = "",
+        override val genres: List<String> = emptyList()
     ) : Film()
 }

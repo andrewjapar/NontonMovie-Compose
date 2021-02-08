@@ -4,6 +4,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -11,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AmbientDensity
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -99,7 +103,7 @@ private fun FilmDescription(
             .wrapContentHeight()
             .fillMaxWidth()
     ) {
-        val (watchListBtn, shareBtn, posterImage, title, description) = createRefs()
+        val (watchListBtn, shareBtn, posterImage, title, genres, description) = createRefs()
 
         PortraitMovieItem(
             movie = film,
@@ -127,6 +131,17 @@ private fun FilmDescription(
         )
 
         Text(
+            text = film.genres.joinToString("   -   "),
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.constrainAs(genres) {
+                width = Dimension.fillToConstraints
+                start.linkTo(title.start)
+                top.linkTo(title.bottom, margin = 2.dp)
+                end.linkTo(title.end)
+            }
+        )
+
+        Text(
             text = film.description,
             modifier = Modifier.constrainAs(description) {
                 width = Dimension.fillToConstraints
@@ -146,7 +161,8 @@ private fun FilmDescription(
             },
             onClick = { }
         ) {
-            Text(text = "Watchlist")
+            Icon(imageVector = Icons.Filled.Add, contentDescription = null)
+            Text(text = "Watchlist", modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
         }
 
         Button(
@@ -159,7 +175,8 @@ private fun FilmDescription(
             },
             onClick = { }
         ) {
-            Text(text = "Share")
+            Icon(imageVector = Icons.Filled.Share, contentDescription = null)
+            Text(text = "Share", modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
         }
     }
 }
