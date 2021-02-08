@@ -99,7 +99,7 @@ private fun FilmDescription(
             .wrapContentHeight()
             .fillMaxWidth()
     ) {
-        val (posterImage, title, description) = createRefs()
+        val (watchListBtn, shareBtn, posterImage, title, description) = createRefs()
 
         PortraitMovieItem(
             movie = film,
@@ -133,9 +133,34 @@ private fun FilmDescription(
                 top.linkTo(posterImage.bottom, margin = 8.dp)
                 start.linkTo(posterImage.start)
                 end.linkTo(title.end)
-                bottom.linkTo(parent.bottom, margin = 16.dp)
             }
         )
+
+        Button(
+            modifier = Modifier.constrainAs(watchListBtn) {
+                width = Dimension.fillToConstraints
+                top.linkTo(description.bottom, margin = 16.dp)
+                bottom.linkTo(parent.bottom, margin = 16.dp)
+                start.linkTo(posterImage.start)
+                end.linkTo(shareBtn.start, margin = 4.dp)
+            },
+            onClick = { }
+        ) {
+            Text(text = "Watchlist")
+        }
+
+        Button(
+            modifier = Modifier.constrainAs(shareBtn) {
+                width = Dimension.fillToConstraints
+                top.linkTo(watchListBtn.top)
+                bottom.linkTo(watchListBtn.bottom)
+                start.linkTo(watchListBtn.end, margin = 4.dp)
+                end.linkTo(title.end)
+            },
+            onClick = { }
+        ) {
+            Text(text = "Share")
+        }
     }
 }
 
