@@ -2,6 +2,8 @@ package dev.andrewjap.nontonmovie.presentation.ui.main.movielist
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -45,8 +47,10 @@ fun MovieListScreen(
     BoxWithConstraints {
         val boxWidth = with(AmbientDensity.current) { constraints.maxWidth.toDp() }
 
-        ScrollableColumn(
-            modifier = Modifier.fillMaxWidth()
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
         ) {
 
             HeadlineMovieSlider(

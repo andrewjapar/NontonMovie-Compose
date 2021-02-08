@@ -17,15 +17,15 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class FilmDetailActivity : AppCompatActivity() {
+class MovieDetailActivity : AppCompatActivity() {
 
-    private val viewModel: FilmDetailViewModel by viewModels()
+    private val viewModel: MovieDetailViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             NontonMovieTheme {
-                FilmDetailScreen()
+                FilmDetailScreen(viewModel)
             }
         }
 
@@ -40,7 +40,7 @@ class FilmDetailActivity : AppCompatActivity() {
         private const val MOVIE_ID = "movie_id"
 
         fun navigate(context: Context, id: Int) {
-            Intent(context, FilmDetailActivity::class.java).apply {
+            Intent(context, MovieDetailActivity::class.java).apply {
                 putExtra(MOVIE_ID, id)
             }.let { context.startActivity(it) }
         }

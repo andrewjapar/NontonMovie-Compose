@@ -1,14 +1,14 @@
 package dev.andrewjap.nontonmovie.presentation.ui.main.tvshowlist
 
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.WithConstraints
 import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
@@ -38,11 +38,13 @@ fun TvShowScreen(
         return
     }
 
-    WithConstraints {
+    BoxWithConstraints {
         val boxWidth = with(AmbientDensity.current) { constraints.maxWidth.toDp() }
 
-        ScrollableColumn(
-            modifier = Modifier.fillMaxWidth()
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
         ) {
 
             HeadlineMovieSlider(

@@ -109,7 +109,7 @@ fun Contents(
 ) {
     Crossfade(current = navBackStackEntry) {
         when (it.arguments?.getString(KEY_ROUTE)) {
-            BottomNavigationScreens.Home.route -> HomeScreen(homeViewModel)
+            BottomNavigationScreens.Home.route -> HomeScreen(homeViewModel, onFilmClicked)
             BottomNavigationScreens.TV.route -> TvShowScreen(tvShowViewModel, onFilmClicked)
             BottomNavigationScreens.Movies.route -> MovieListScreen(
                 movieListViewModel,

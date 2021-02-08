@@ -7,7 +7,8 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.platform.setContent
 import dagger.hilt.android.AndroidEntryPoint
 import dev.andrewjap.nontonmovie.domain.entity.Film
-import dev.andrewjap.nontonmovie.presentation.ui.filmdetail.FilmDetailActivity
+import dev.andrewjap.nontonmovie.presentation.ui.filmdetail.MovieDetailActivity
+import dev.andrewjap.nontonmovie.presentation.ui.filmdetail.TvShowDetailActivity
 import dev.andrewjap.nontonmovie.presentation.ui.main.genrelist.GenreListViewModel
 import dev.andrewjap.nontonmovie.presentation.ui.main.home.HomeViewModel
 import dev.andrewjap.nontonmovie.presentation.ui.main.movielist.MovieListViewModel
@@ -40,7 +41,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private val onFilmClicked: (Film) -> Unit = {
-        FilmDetailActivity.navigate(this, it.id)
+    private val onFilmClicked: (Film) -> Unit = { film ->
+        when (film) {
+            is Film.TvShow -> TvShowDetailActivity.navigate(this, film.id)
+            is Film.Movie -> MovieDetailActivity.navigate(this, film.id)
+        }
     }
 }

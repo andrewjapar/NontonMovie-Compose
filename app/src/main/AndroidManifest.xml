@@ -19,8 +19,8 @@
         </activity>
 
         <activity android:name=".presentation.ui.login.TestActivity" />
-
-        <activity android:name=".presentation.ui.filmdetail.FilmDetailActivity" />
+        <activity android:name=".presentation.ui.filmdetail.MovieDetailActivity" />
+        <activity android:name=".presentation.ui.filmdetail.TvShowDetailActivity" />
 
     </application>
 

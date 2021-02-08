@@ -2,6 +2,8 @@ package dev.andrewjap.nontonmovie.presentation.ui.main.home
 
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -12,6 +14,7 @@ import androidx.compose.ui.layout.WithConstraints
 import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
+import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.andrewjap.nontonmovie.presentation.component.HeadlineMovieSlider
 import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieList
 import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieListType
@@ -20,7 +23,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = viewModel()
+    viewModel: HomeViewModel = viewModel(),
+    onFilmClicked: (Film) -> Unit = {}
 ) {
 
     val viewState by viewModel.showMovies.collectAsState()
@@ -36,15 +40,18 @@ fun HomeScreen(
         return
     }
 
-    WithConstraints {
+    BoxWithConstraints {
         val boxWidth = with(AmbientDensity.current) { constraints.maxWidth.toDp() }
 
-        ScrollableColumn(
-            modifier = Modifier.fillMaxWidth()
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
         ) {
 
             HeadlineMovieSlider(
                 items = viewState.popularMovies,
+                onItemClicked = onFilmClicked,
                 modifier = Modifier
                     .padding(start = 16.dp, end = 16.dp)
                     .fillMaxWidth()
@@ -54,6 +61,7 @@ fun HomeScreen(
             HorizontalMovieList(
                 items = viewState.popularMovies,
                 title = "Popular Shows",
+                onItemClicked = onFilmClicked,
                 type = HorizontalMovieListType.ROUNDED,
                 paddingContent = 8.dp
             )
@@ -61,6 +69,7 @@ fun HomeScreen(
             HorizontalMovieList(
                 items = viewState.popularMovies,
                 title = "Hello World",
+                onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
                 height = boxWidth
                     .div(3)
@@ -70,6 +79,7 @@ fun HomeScreen(
             HorizontalMovieList(
                 items = viewState.popularMovies,
                 title = "Hello World",
+                onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
                 type = HorizontalMovieListType.LANDSCAPE,
                 height = boxWidth
@@ -80,6 +90,7 @@ fun HomeScreen(
             HorizontalMovieList(
                 items = viewState.popularMovies,
                 title = "Hello World",
+                onItemClicked = onFilmClicked,
                 paddingContent = 8.dp,
                 height = boxWidth
                     .div(3)

@@ -14,7 +14,6 @@ import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.viewModel
 import dev.andrewjap.nontonmovie.domain.entity.Film
 import dev.andrewjap.nontonmovie.presentation.component.HorizontalMovieList
 import dev.andrewjap.nontonmovie.presentation.component.NontonMovieImage
@@ -29,7 +28,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Composable
 fun FilmDetailScreen(
-    viewModel: FilmDetailViewModel = viewModel()
+    viewModel: FilmDetailViewModel
 ) {
 
     val viewState by viewModel.showDetails.collectAsState()
